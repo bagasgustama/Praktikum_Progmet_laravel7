@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WelcomeController@index');
 
 //verify email
 Auth::routes(['verify' => true]);
@@ -46,4 +44,39 @@ Route::prefix('admin')->group(function () {
 });
 Auth::routes();
 
+
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/produk','MainController@tampilproduk');
+Route::get('/produk/{produk:id}/view','MainController@tampildetailproduk');
+Route::get('/kategori/{product_categories:id}','MainController@kategorifilter');
+
+
+Route::group(['middleware'=> ['auth']],function (){
+
+    Route::get('/cart','CartController@cartproduk');
+    Route::post('/cart/store','CartController@store');
+    Route::delete('/produk/cart/{cart:id}/deletecart','CartController@hapuscart');
+    Route::get('/checkout','CheckoutController@checkoutproduk');
+    Route::post('/checkout-produk','CheckoutController@store');
+    Route::get('/upload-bukti/{id}','CheckoutController@konfirmasiproduk');
+
+    Route::post('uploadpembayaran/{id}','CheckoutController@uploadpembayaran');
+    Route::get('sukses-bayar/{id}','CheckoutController@suksesbayar');
+
+    
+    Route::post('/produk/cekongkir','CheckoutController@cekongkir');
+    Route::get('/produk/buynow','BuyNowController@buynow');
+    Route::post('/produk/store/buynow','BuyNowController@storebuynow');
+    Route::post('/produk/cancel/{id}','CheckoutController@cancelproduk');
+
+    Route::post('/produk/addqty/{id}','CartController@addqty');
+    Route::post('/produk/minusqty/{id}','CartController@minusqty');
+
+
+});
+
+
+Route::group(['middleware'=> ['auth:admin']],function () {
+
+
+});

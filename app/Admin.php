@@ -44,4 +44,18 @@ class Admin extends Authenticatable
     {
         $this->notify(new AdminResetPasswordNotification($token));
     }
+
+    public function notifications()
+        {
+            return $this->morphMany(AdminNotification::class, 'notifiable')->orderby('created_at', 'desc');
+        }
+
+        public function createNotif($data){
+            $notif = new AdminNotifications();
+            $notif->type = 'App\Notifications\AdminNotification';
+            $notif->notifiable_type = 'App\User';
+            $notif->notifiable_id = $this->id;
+            $notif->data = $data;
+            $notif->save();
+        }
 }

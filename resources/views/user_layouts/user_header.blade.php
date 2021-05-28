@@ -50,27 +50,26 @@
                         <div class="cart box_1">
                           <a href="/cart">
                             <h3> <div class="total">
-                              <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+                              {{-- <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div> --}}
                               <img src="images/bag.png" alt="" />
                             </h3>
                           </a>
-                          <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+                          <p><a href="javascript:;" class="simpleCart_empty">Cart</a></p>
                           <div class="clearfix"> </div>
                         </div>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('user.logout') }}"
-                                   onclick="event.preventDefault();
-                                             document.getElementById('user-logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
+                          <div style="margin-left: 20px" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="{{ route('user.logout') }}"
+                                  onclick="event.preventDefault();
+                                            document.getElementById('user-logout-form').submit();">
+                                  {{ __('Logout') }}
+                              </a>
 
-                                <form id="user-logout-form" action="{{ route('user.logout') }}" method="POST"
-                                      style="display: none;">
-                                    @csrf
-                                </form>
-
-
-                            </div>
+                              <form id="user-logout-form" action="{{ route('user.logout') }}" method="POST"
+                                    style="display: none;">
+                                  @csrf
+                              </form>
+                          </div>
+                          <a  href="/profile" >Profile</a>
                         @endif
                     </li>
                     @endguest
@@ -112,6 +111,7 @@
             <!-- Mega Menu -->
             <li class="dropdown active">
             <li><a href="/produk">Products</a></li>	
+            <li><a href="/transaksi">Transaction</a></li>	
             <!-- Mega Menu -->
           </ul>
         </div>

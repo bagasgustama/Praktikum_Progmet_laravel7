@@ -72,6 +72,14 @@ Route::group(['middleware'=> ['auth']],function (){
     Route::post('/produk/addqty/{id}','CartController@addqty');
     Route::post('/produk/minusqty/{id}','CartController@minusqty');
 
+    
+    Route::get('/profile', 'MainController@tampilprofile')->name('profile');
+    Route::get('/edit_profile/{id}','MainController@editfotoprofile');
+    Route::post('/profile/uploadfoto/{id}','MainController@uploadfotoprofile');
+
+    Route::get('/transaksi', 'MainController@tampiltransaksi')->name('profile');
+
+
 
 });
 

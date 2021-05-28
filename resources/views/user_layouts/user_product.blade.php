@@ -32,6 +32,7 @@ SLIDESHOW
                 @foreach ($produkrow as $produk)
                     <div class="new-collections-grid1 col-md-4 animated wow slideInUp" data-wow-delay=".5s">
                       <div class="new-collections-grid1-image">
+                          {{-- <a href="/produk/{{ $produk["id"] }}/view" class="product-image"><img src="{{ $produk->productimage }}" alt=" " class="img-responsive"></a> --}}
                           <a href="/produk/{{ $produk["id"] }}/view" class="product-image"><img src="images/19.jpg" alt=" " class="img-responsive"></a>
                           <div class="new-collections-grid1-image-pos products-right-grids-pos">
                               {{-- <a href="/produk/{{ $produk["id"] }}/view">View</a> --}}

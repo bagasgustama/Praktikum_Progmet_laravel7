@@ -65,6 +65,14 @@ class MainController extends Controller
         return view('user_layouts.user_about', ['data_kategori' => $data_kategori]);
     }
 
+    public function tampiltransaksi(){
+        $data_transaksi = Transactions::where('user_id', Auth::user()->id)->get();
+        // $data_user = User::find($id);
+
+
+        return view('user_layouts.user_transactionlist', compact('data_transaksi'));
+    }
+
     public function tampilprofile(){
         $data_transaksi = Transactions::where('user_id', Auth::user()->id)->get();
         // $data_user = User::find($id);
@@ -77,7 +85,7 @@ class MainController extends Controller
         $data_user = User::find($id);
         
 
-        return view('user_layouts.edit_profile', compact('data_user'));
+        return view('user_layouts.user_editprofile', compact('data_user'));
     }
 
     public function uploadfotoprofile ($id, Request $request){
@@ -87,6 +95,7 @@ class MainController extends Controller
             // dd($data_transaksi->produk->pluck('id'));
 
             $nama_image = md5(now().'_').$foto->getClientOriginalName();
+            // $nama_image = now().'_'.$foto->getClientOriginalName();
             $foto->storeAs('img/fotoprofilepengguna',$nama_image);
 
             $data_user = User::find($id);

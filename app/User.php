@@ -47,4 +47,8 @@ class User extends Authenticatable implements MustVerifyEmail
         $notif->data = $data;
         $notif->save();
     }
+
+    public function getimageattribute(){
+        return $this->profile_image? asset('storage/img/fotoprofilepengguna/'.$this->profile_image):asset('img-001.jpg');
+    }
 }

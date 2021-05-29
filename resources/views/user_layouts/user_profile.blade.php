@@ -8,10 +8,8 @@
       <li class="active">Profile Page</li>
     </ol>
     <h1 class="header text-uppercase" style="margin-top: 60px">
-      Profil
-      <span>
-          Biodata
-      </span>
+      Profil Pengguna
+    
     </h1>
     @if (Auth::user()->profile_image != null)
     {{-- <div class="image">

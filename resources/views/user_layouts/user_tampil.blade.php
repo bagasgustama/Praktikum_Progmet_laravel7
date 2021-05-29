@@ -89,18 +89,39 @@
 
 				{{-- <h4><span class="item_price">Rp.{{ number_format($produk["price"]) }}</span></h4> --}}
 				<div class="rating1">
-					<span class="starRating">
-						<input id="rating5" type="radio" name="rating" value="5">
-						<label for="rating5">5</label>
-						<input id="rating4" type="radio" name="rating" value="4">
-						<label for="rating4">4</label>
-						<input id="rating3" type="radio" name="rating" value="3" checked>
-						<label for="rating3">3</label>
-						<input id="rating2" type="radio" name="rating" value="2">
-						<label for="rating2">2</label>
-						<input id="rating1" type="radio" name="rating" value="1">
-						<label for="rating1">1</label>
+					<div class="description">
+					<h5 ><i>Rating</i></h5>
+					<span class="starRating" style="height: 23px">
+
+						@if ($produk->reviewproduk->avg('rate'))
+        
+							@for ($i = 0; $i < 5; $i++)
+									@if (floor($produk->reviewproduk->avg('rate')) - $i >= 1)
+									{{--Full Start--}}
+									<img src="{{asset('images/2.png')}}" data-imagezoom="true" >
+											{{-- <i class="fas fa-star"> </i> --}}
+									@elseif ($produk->reviewproduk->avg('rate') - $i > 0)
+									{{--Half Start--}}
+									<img src="{{asset('images/2.png')}}" data-imagezoom="true" >
+
+											{{-- <i class="fas fa-star-half-alt text-warning"> </i> --}}
+									@else
+									{{--Empty Start--}}
+									<img src="{{asset('images/1.png')}}" data-imagezoom="true" >
+
+											{{-- <i class="far fa-star text-warning"> </i> --}}
+									@endif
+							@endfor
+
+						@else
+							@for ($i = 0; $i < 5; $i++)
+							<img src="{{asset('images/1.png')}}" data-imagezoom="true" >
+
+							@endfor
+
+						@endif
 					</span>
+				</div>
 				</div>
 				<div class="description">
 					<h5><i>Description</i></h5>
@@ -110,7 +131,7 @@
 					<h5 class="mt-4"><i>Stok</i></h5>
 					<p>{{ $produk["stock"]}}</p>
 					<h5 class="mt-4"><i>Weight</i></h5>
-					<p>{{ $produk["weight"]}}</p>
+					<p>{{ $produk["weight"]}} gram</p>
 				</div>
 				
 				<div class="occasion-cart">
@@ -132,6 +153,80 @@
 		
 		</div>
 		<div class="clearfix"> </div>
+		<div class="row shop-item-info">
+			<div class="col-xs-12">
+					
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation">
+									<a class="text-uppercase">Review Product
+									</a>
+							</li>
+					</ul>
+
+					<!-- Tab panes -->
+					<div class="tab-content">
+							<div role="tabpanel" class="comments" id="comments">
+									
+									<!-- Header -->
+									<h3 class="header"></h3>
+
+									<!-- Comments -->
+									<ul class="media-list">
+
+											<!-- 1 comments -->
+											@foreach ($produk->reviewproduk as $review)
+											<li class="media">
+													<div class="media-left">
+															{{-- <a href="#">
+																	<img class="media-object" src="{{ $review->user->image }}" alt="...">
+															</a> --}}
+													</div>
+													<div class="media-body">
+															<h3 class="media-heading" style="font-weight: bold">
+																	<a>{{ $review->user->name }}</a>
+															</h3>
+															<h4>
+																{{$review->content}}
+															</h4>
+
+															<div><span class="media-info" style="font-size: 12px; margin-top: 10px">{{ date("d F Y", strtotime($review->created_at)) }}</span></div>
+
+															{{-- Balasan --}}
+															@foreach ($review->response as $respon_admin)
+															<div class="media">
+																	<div class="media-left">
+																			<a href="#">
+																					<img class="media-object" src="{{ $respon_admin->admin->image }}" alt="...">
+																			</a>
+																	</div>
+																	<div class="media-body">
+																			<h4 class="media-heading">
+																					<a href="#">{{ $respon_admin->admin->name }}</a>
+																			</h4>
+																			{{ $respon_admin->content }}
+
+																			<span class="media-info">{{ date("d F Y", strtotime($respon_admin->created_at)) }}</span>
+
+																	</div>
+															</div>
+																	
+															@endforeach
+
+													</div>
+											</li>
+													
+											@endforeach
+
+									</ul>
+
+							
+							</div>
+					</div>
+			</div>
+	</div>
+	<!-- END: COMMENTS -->
+</div>
 	</div>
 </div>
 <!-- //single -->

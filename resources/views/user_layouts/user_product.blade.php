@@ -38,24 +38,40 @@ SLIDESHOW
                               {{-- <a href="/produk/{{ $produk["id"] }}/view">View</a> --}}
                           </div>
                           <div class="new-collections-grid1-right products-right-grids-pos-right">
-                              <div class="rating">
-                                  <div class="rating-left">
-                                      <img src="images/2.png" alt=" " class="img-responsive">
-                                  </div>
-                                  <div class="rating-left">
-                                      <img src="images/2.png" alt=" " class="img-responsive">
-                                  </div>
-                                  <div class="rating-left">
-                                      <img src="images/2.png" alt=" " class="img-responsive">
-                                  </div>
-                                  <div class="rating-left">
-                                      <img src="images/1.png" alt=" " class="img-responsive">
-                                  </div>
-                                  <div class="rating-left">
-                                      <img src="images/1.png" alt=" " class="img-responsive">
-                                  </div>
-                                  <div class="clearfix"> </div>
-                              </div>
+                            <div class="rating1">
+                              <div class="description">
+                              <span class="starRating" style="height: 23px">
+                    
+                                @if ($produk->reviewproduk->avg('rate'))
+                            
+                                  @for ($i = 0; $i < 5; $i++)
+                                      @if (floor($produk->reviewproduk->avg('rate')) - $i >= 1)
+                                      {{--Full Start--}}
+                                      <img src="{{asset('images/2.png')}}" data-imagezoom="true" >
+                                          {{-- <i class="fas fa-star"> </i> --}}
+                                      @elseif ($produk->reviewproduk->avg('rate') - $i > 0)
+                                      {{--Half Start--}}
+                                      <img src="{{asset('images/2.png')}}" data-imagezoom="true" >
+                    
+                                          {{-- <i class="fas fa-star-half-alt text-warning"> </i> --}}
+                                      @else
+                                      {{--Empty Start--}}
+                                      <img src="{{asset('images/1.png')}}" data-imagezoom="true" >
+                    
+                                          {{-- <i class="far fa-star text-warning"> </i> --}}
+                                      @endif
+                                  @endfor
+                    
+                                @else
+                                  @for ($i = 0; $i < 5; $i++)
+                                  <img src="{{asset('images/1.png')}}" data-imagezoom="true" >
+                    
+                                  @endfor
+                    
+                                @endif
+                              </span>
+                            </div>
+                            </div>
                           </div>
                       </div>
                       <h4><a href="/produk/{{ $produk["id"] }}/view">{{ $produk["product_name"] }}</a></h4>

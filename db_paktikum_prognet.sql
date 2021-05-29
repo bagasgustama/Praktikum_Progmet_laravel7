@@ -99,30 +99,30 @@ CREATE TABLE `carts` (
   KEY `product_id` (`product_id`),
   CONSTRAINT `carts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `carts_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `carts` */
 
 insert  into `carts`(`id`,`user_id`,`product_id`,`qty`,`created_at`,`updated_at`,`status`) values 
-(1,1,1,1,'2021-05-27 19:46:45','2021-05-27 19:46:45','notyet'),
-(2,1,2,1,'2021-05-27 19:47:24','2021-05-27 19:47:24','notyet'),
-(3,1,3,1,'2021-05-27 20:11:14','2021-05-27 20:11:14','notyet'),
-(7,2,4,1,'2021-05-28 05:53:59','2021-05-28 19:28:01','checkedout'),
-(8,2,6,1,'2021-05-28 06:18:20','2021-05-28 19:28:01','checkedout'),
-(9,2,1,1,'2021-05-28 07:12:39','2021-05-28 19:28:01','checkedout'),
-(10,2,4,1,'2021-05-28 07:14:28','2021-05-28 19:28:01','checkedout'),
-(11,2,6,1,'2021-05-28 07:48:00','2021-05-28 19:28:01','checkedout'),
-(12,2,1,1,'2021-05-28 08:26:00','2021-05-28 19:28:01','checkedout'),
-(14,2,1,1,'2021-05-28 08:57:02','2021-05-28 19:28:01','checkedout'),
-(16,2,1,1,'2021-05-28 09:26:37','2021-05-28 19:28:01','checkedout'),
-(17,2,4,1,'2021-05-28 09:45:10','2021-05-28 19:28:01','checkedout'),
-(25,2,1,1,'2021-05-28 10:03:30','2021-05-28 19:28:01','checkedout'),
-(26,2,1,1,'2021-05-28 10:04:24','2021-05-28 19:28:01','checkedout'),
-(36,2,1,1,'2021-05-28 11:00:05','2021-05-28 19:28:01','checkedout'),
-(37,2,1,1,'2021-05-28 11:00:13','2021-05-28 19:28:01','checkedout'),
-(38,2,1,1,'2021-05-28 11:06:21','2021-05-28 19:28:01','checkedout'),
-(39,2,1,1,'2021-05-28 19:11:53','2021-05-28 19:28:01','checkedout'),
-(41,2,1,1,'2021-05-28 19:27:51','2021-05-28 19:28:01','checkedout');
+(7,2,4,1,'2021-05-28 05:53:59','2021-05-29 16:31:13','checkedout'),
+(8,2,6,1,'2021-05-28 06:18:20','2021-05-29 16:31:13','checkedout'),
+(9,2,1,1,'2021-05-28 07:12:39','2021-05-29 16:31:13','checkedout'),
+(10,2,4,1,'2021-05-28 07:14:28','2021-05-29 16:31:13','checkedout'),
+(11,2,6,1,'2021-05-28 07:48:00','2021-05-29 16:31:13','checkedout'),
+(12,2,1,1,'2021-05-28 08:26:00','2021-05-29 16:31:13','checkedout'),
+(14,2,1,1,'2021-05-28 08:57:02','2021-05-29 16:31:13','checkedout'),
+(16,2,1,1,'2021-05-28 09:26:37','2021-05-29 16:31:13','checkedout'),
+(17,2,4,1,'2021-05-28 09:45:10','2021-05-29 16:31:13','checkedout'),
+(25,2,1,1,'2021-05-28 10:03:30','2021-05-29 16:31:13','checkedout'),
+(26,2,1,1,'2021-05-28 10:04:24','2021-05-29 16:31:13','checkedout'),
+(36,2,1,1,'2021-05-28 11:00:05','2021-05-29 16:31:13','checkedout'),
+(37,2,1,1,'2021-05-28 11:00:13','2021-05-29 16:31:13','checkedout'),
+(38,2,1,1,'2021-05-28 11:06:21','2021-05-29 16:31:13','checkedout'),
+(39,2,1,1,'2021-05-28 19:11:53','2021-05-29 16:31:13','checkedout'),
+(41,2,1,1,'2021-05-28 19:27:51','2021-05-29 16:31:13','checkedout'),
+(44,2,6,1,'2021-05-29 03:24:00','2021-05-29 16:31:13','checkedout'),
+(45,2,1,1,'2021-05-29 16:30:32','2021-05-29 16:31:13','checkedout'),
+(46,2,1,1,'2021-05-29 16:31:02','2021-05-29 16:31:13','checkedout');
 
 /*Table structure for table `cities` */
 
@@ -837,9 +837,12 @@ CREATE TABLE `product_reviews` (
   KEY `product_id` (`product_id`),
   CONSTRAINT `product_reviews_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `product_reviews_ibfk_3` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `product_reviews` */
+
+insert  into `product_reviews`(`id`,`product_id`,`user_id`,`rate`,`content`,`created_at`,`updated_at`) values 
+(1,1,2,4,'mantap','2021-05-29 17:03:52','2021-05-29 17:03:52');
 
 /*Table structure for table `products` */
 
@@ -961,7 +964,7 @@ CREATE TABLE `transaction_details` (
   KEY `id_product` (`product_id`),
   CONSTRAINT `transaction_details_ibfk_1` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`id`),
   CONSTRAINT `transaction_details_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `transaction_details` */
 
@@ -981,7 +984,10 @@ insert  into `transaction_details`(`id`,`transaction_id`,`product_id`,`qty`,`dis
 (13,33,1,1,0,10000,'2021-05-28 11:00:27','2021-05-28 11:00:27'),
 (14,34,1,1,0,10000,'2021-05-28 11:06:32','2021-05-28 11:06:32'),
 (15,35,1,1,0,10000,'2021-05-28 19:12:05','2021-05-28 19:12:05'),
-(16,36,1,1,0,10000,'2021-05-28 19:28:01','2021-05-28 19:28:01');
+(16,36,1,1,0,10000,'2021-05-28 19:28:01','2021-05-28 19:28:01'),
+(17,37,6,1,10,45000,'2021-05-29 03:24:57','2021-05-29 03:24:57'),
+(18,38,1,1,0,10000,'2021-05-29 16:30:43','2021-05-29 16:30:43'),
+(19,39,1,1,0,10000,'2021-05-29 16:31:13','2021-05-29 16:31:13');
 
 /*Table structure for table `transactions` */
 
@@ -1007,17 +1013,17 @@ CREATE TABLE `transactions` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`courier_id`) REFERENCES `couriers` (`id`),
   CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `transactions` */
 
 insert  into `transactions`(`id`,`timeout`,`address`,`regency`,`province`,`total`,`shipping_cost`,`sub_total`,`user_id`,`courier_id`,`proof_of_payment`,`created_at`,`updated_at`,`status`) values 
-(1,'2021-05-29 06:54:53','a',NULL,NULL,63000.00,NULL,63000.00,2,1,NULL,'2021-05-28 06:54:53','2021-05-28 06:54:53','unverified'),
+(1,'2021-05-29 06:54:53','a',NULL,NULL,63000.00,NULL,63000.00,2,1,NULL,'2021-05-28 06:54:53','2021-05-29 16:28:47','expired'),
 (2,'2021-05-29 06:55:36','a',NULL,NULL,63000.00,NULL,63000.00,2,1,NULL,'2021-05-28 06:55:36','2021-05-28 06:55:36','unverified'),
 (3,'2021-05-29 06:55:42','a',NULL,NULL,63000.00,NULL,63000.00,2,1,NULL,'2021-05-28 06:55:42','2021-05-28 06:55:42','unverified'),
 (4,'2021-05-29 06:55:57','a',NULL,NULL,63000.00,NULL,63000.00,2,1,NULL,'2021-05-28 06:55:57','2021-05-28 06:55:57','unverified'),
 (5,'2021-05-29 07:03:17','a',NULL,NULL,63000.00,NULL,63000.00,2,1,NULL,'2021-05-28 07:03:17','2021-05-28 07:03:17','unverified'),
-(6,'2021-05-29 07:03:50','a',NULL,NULL,63000.00,NULL,63000.00,2,1,NULL,'2021-05-28 07:03:50','2021-05-28 07:03:50','unverified'),
+(6,'2021-05-29 07:03:50','a',NULL,NULL,63000.00,NULL,63000.00,2,1,NULL,'2021-05-28 07:03:50','2021-05-29 16:28:56','expired'),
 (7,'2021-05-29 07:04:31','a',NULL,NULL,0.00,NULL,0.00,2,1,NULL,'2021-05-28 07:04:31','2021-05-28 07:04:31','unverified'),
 (8,'2021-05-29 07:05:11','a',NULL,NULL,0.00,NULL,0.00,2,1,NULL,'2021-05-28 07:05:11','2021-05-28 07:05:11','unverified'),
 (9,'2021-05-29 07:05:40','a',NULL,NULL,0.00,NULL,0.00,2,1,NULL,'2021-05-28 07:05:40','2021-05-28 07:05:40','unverified'),
@@ -1045,9 +1051,12 @@ insert  into `transactions`(`id`,`timeout`,`address`,`regency`,`province`,`total
 (31,'2021-05-29 10:03:55','sdad','Badung','Bali',19000.00,9000.00,10000.00,2,1,'0520645ab9dd96d29125f5fb1f79553f1.jpg','2021-05-28 10:03:55','2021-05-28 10:04:01','unverified'),
 (32,'2021-05-29 10:14:46','sdad','Badung','Bali',19000.00,9000.00,10000.00,2,1,'0fcf50ca16025fb112a57e1b370e20b31.jpg','2021-05-28 10:14:46','2021-05-28 10:14:51','unverified'),
 (33,'2021-05-29 11:00:27','sdad','Badung','Bali',38000.00,18000.00,20000.00,2,1,'0548851cc9c4d0d7027c7617badb53271.jpg','2021-05-28 11:00:27','2021-05-28 11:00:34','unverified'),
-(34,'2021-05-29 11:06:32','sdad','Badung','Bali',19000.00,9000.00,10000.00,2,1,'1c0bdf9b8688a6387a88753cefb69e4f1.jpg','2021-05-28 11:06:32','2021-05-28 11:06:37','unverified'),
+(34,'2021-05-29 11:06:32','sdad','Badung','Bali',19000.00,9000.00,10000.00,2,1,'1c0bdf9b8688a6387a88753cefb69e4f1.jpg','2021-05-28 11:06:32','2021-05-29 16:29:11','expired'),
 (35,'2021-05-29 19:12:05','sdad','Badung','Bali',19000.00,9000.00,10000.00,2,1,NULL,'2021-05-28 19:12:05','2021-05-28 19:14:14','canceled'),
-(36,'2021-05-29 19:28:01','sdad','Badung','Bali',19000.00,9000.00,10000.00,2,1,NULL,'2021-05-28 19:28:01','2021-05-28 19:28:05','canceled');
+(36,'2021-05-29 19:28:01','sdad','Badung','Bali',19000.00,9000.00,10000.00,2,1,NULL,'2021-05-28 19:28:01','2021-05-28 19:28:05','canceled'),
+(37,'2021-05-30 03:24:57','sdad','Jembrana','Bali',54000.00,9000.00,45000.00,2,1,NULL,'2021-05-29 03:24:57','2021-05-29 03:25:03','canceled'),
+(38,'2021-05-30 16:30:43','sdad','Badung','Bali',19000.00,9000.00,10000.00,2,1,NULL,'2021-05-29 16:30:43','2021-05-29 16:44:15','delivered'),
+(39,'2021-05-30 16:31:13','sdad','Badung','Bali',18000.00,8000.00,10000.00,2,2,'74340fc314e3f83f7b37114561dd7fa6Screenshot (1).png','2021-05-29 16:31:13','2021-05-29 16:38:16','success');
 
 /*Table structure for table `user_notifications` */
 
@@ -1066,7 +1075,7 @@ CREATE TABLE `user_notifications` (
   KEY `user_notifications_notifiable_type_notifiable_id_index` (`notifiable_type`,`notifiable_id`),
   KEY `notifiable_id` (`notifiable_id`),
   CONSTRAINT `user_notifications_ibfk_1` FOREIGN KEY (`notifiable_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `user_notifications` */
 
@@ -1088,7 +1097,17 @@ insert  into `user_notifications`(`id`,`type`,`notifiable_type`,`notifiable_id`,
 (15,'App\\Notifications\\AdminNotification','App\\User',2,'{\"nama\":\"Bagas Gustama\",\"massage\":\"pembatalan transaksi anda berhasil\",\"id\":35}',NULL,'2021-05-28 19:14:42','2021-05-28 19:14:42'),
 (16,'App\\Notifications\\AdminNotification','App\\User',2,'{\"nama\":\"Bagas Gustama\",\"massage\":\"pembatalan transaksi anda berhasil\",\"id\":35}',NULL,'2021-05-28 19:15:30','2021-05-28 19:15:30'),
 (17,'App\\Notifications\\AdminNotification','App\\User',2,'{\"nama\":\"Bagas Gustama\",\"massage\":\"Transaksi anda sedang diproses\",\"id\":36}',NULL,'2021-05-28 19:28:01','2021-05-28 19:28:01'),
-(18,'App\\Notifications\\AdminNotification','App\\User',2,'{\"nama\":\"Bagas Gustama\",\"massage\":\"pembatalan transaksi anda berhasil\",\"id\":36}',NULL,'2021-05-28 19:28:05','2021-05-28 19:28:05');
+(18,'App\\Notifications\\AdminNotification','App\\User',2,'{\"nama\":\"Bagas Gustama\",\"massage\":\"pembatalan transaksi anda berhasil\",\"id\":36}',NULL,'2021-05-28 19:28:05','2021-05-28 19:28:05'),
+(19,'App\\Notifications\\AdminNotification','App\\User',2,'{\"nama\":\"Bagas Gustama\",\"massage\":\"Transaksi anda sedang diproses\",\"id\":37}',NULL,'2021-05-29 03:24:57','2021-05-29 03:24:57'),
+(20,'App\\Notifications\\AdminNotification','App\\User',2,'{\"nama\":\"Bagas Gustama\",\"massage\":\"pembatalan transaksi anda berhasil\",\"id\":37}',NULL,'2021-05-29 03:25:03','2021-05-29 03:25:03'),
+(21,'App\\Notifications\\AdminNotification','App\\User',2,'{\"nama\":\"Bagas Gustama\",\"massage\":\"Transaksi anda telah kadarluarsa\",\"id\":1}',NULL,'2021-05-29 16:28:47','2021-05-29 16:28:47'),
+(22,'App\\Notifications\\AdminNotification','App\\User',2,'{\"nama\":\"Bagas Gustama\",\"massage\":\"Transaksi anda telah kadarluarsa\",\"id\":6}',NULL,'2021-05-29 16:28:56','2021-05-29 16:28:56'),
+(23,'App\\Notifications\\AdminNotification','App\\User',2,'{\"nama\":\"Bagas Gustama\",\"massage\":\"Transaksi anda telah kadarluarsa\",\"id\":34}',NULL,'2021-05-29 16:29:11','2021-05-29 16:29:11'),
+(24,'App\\Notifications\\AdminNotification','App\\User',2,'{\"nama\":\"Bagas Gustama\",\"massage\":\"Transaksi anda sedang diproses\",\"id\":38}',NULL,'2021-05-29 16:30:43','2021-05-29 16:30:43'),
+(25,'App\\Notifications\\AdminNotification','App\\User',2,'{\"nama\":\"Bagas Gustama\",\"massage\":\"pembatalan transaksi anda berhasil\",\"id\":38}',NULL,'2021-05-29 16:30:55','2021-05-29 16:30:55'),
+(26,'App\\Notifications\\AdminNotification','App\\User',2,'{\"nama\":\"Bagas Gustama\",\"massage\":\"Transaksi anda sedang diproses\",\"id\":39}',NULL,'2021-05-29 16:31:13','2021-05-29 16:31:13'),
+(27,'App\\Notifications\\AdminNotification','App\\User',2,'{\"nama\":\"Bagas Gustama\",\"massage\":\"Barang pesanan sedang dalam perjalanan\",\"id\":39}',NULL,'2021-05-29 16:38:16','2021-05-29 16:38:16'),
+(28,'App\\Notifications\\AdminNotification','App\\User',2,'{\"nama\":\"Bagas Gustama\",\"massage\":\"Barang pesanan sedang dalam perjalanan\",\"id\":38}',NULL,'2021-05-29 16:44:15','2021-05-29 16:44:15');
 
 /*Table structure for table `users` */
 
@@ -1098,8 +1117,8 @@ CREATE TABLE `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `profile_image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT 'null',
-  `status` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT 'null',
+  `profile_image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -1112,9 +1131,9 @@ CREATE TABLE `users` (
 /*Data for the table `users` */
 
 insert  into `users`(`id`,`name`,`email`,`profile_image`,`status`,`email_verified_at`,`password`,`remember_token`,`created_at`,`updated_at`) values 
-(1,'Bagas Gustama','bagasgustama28@gmail.com','null','null','2021-05-26 19:04:52','$2y$10$9uVYSqiAXtJWiXzVLrVu3Ogh2YqtjsAk3wpV/sWT7o/TLMyB22bGO',NULL,'2021-05-24 18:39:26','2021-05-26 19:04:52'),
-(2,'Bagas Gustama','bagasgustama35@gmail.com','null','null','2021-05-25 06:11:57','$2y$10$ubEx6r.c4Uze3dllsz.UjO5.M3Ka4BfLHa1TiuXwi.uCnhrbmt3/C','Ij084k0DEQDzwF519mSr8G5vDNlrZZxDxXW5CEJHbtBW58yptyq1xYZ211oW','2021-05-25 06:05:41','2021-05-25 06:29:39'),
-(3,'Bagas Tama','bagas@gmail.com','null','null','2021-05-25 06:32:53','$2y$10$i/ScI3kwBerEwW.ZIBUwdOd3j6Rx/iLcJyllQIrO3P22Jtye05cBa',NULL,'2021-05-25 06:32:37','2021-05-25 06:32:53');
+(1,'Bagas Gustama','bagasgustama28@gmail.com','ecdc8a9b1e9b9c6c74a6813a0ae4e2b2Screenshot (1).png','null','2021-05-26 19:04:52','$2y$10$9uVYSqiAXtJWiXzVLrVu3Ogh2YqtjsAk3wpV/sWT7o/TLMyB22bGO',NULL,'2021-05-24 18:39:26','2021-05-29 16:10:19'),
+(2,'Bagas Gustama','bagasgustama35@gmail.com','0f696b9beddf70a3220ccd6f9830fa02Screenshot (607).png','null','2021-05-25 06:11:57','$2y$10$ubEx6r.c4Uze3dllsz.UjO5.M3Ka4BfLHa1TiuXwi.uCnhrbmt3/C','FEc4PiuCF7W28QRAD5j0eujQM80GOYWtacIGa05sqhuyFIwpCSMzJUT8ZhUJ','2021-05-25 06:05:41','2021-05-29 16:23:47'),
+(3,'Bagas Tama','bagas@gmail.com','','null','2021-05-25 06:32:53','$2y$10$i/ScI3kwBerEwW.ZIBUwdOd3j6Rx/iLcJyllQIrO3P22Jtye05cBa',NULL,'2021-05-25 06:32:37','2021-05-25 06:32:53');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

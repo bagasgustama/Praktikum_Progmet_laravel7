@@ -49,6 +49,6 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function getimageattribute(){
-        return $this->profile_image? asset('storage/img/fotoprofilepengguna/'.$this->profile_image):asset('img-001.jpg');
+        return $this->profile_image? asset('storage/app/img/fotoprofilepengguna/'.$this->profile_image):asset('1.jpg');
     }
 }

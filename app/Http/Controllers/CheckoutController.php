@@ -346,7 +346,7 @@ class CheckoutController extends Controller
 
         // return($data_transaksi->status);
         
-        return view('user_layouts.user_suksesbayar', compact('data_transaksi'));
+        return view('user_layouts.user_tracking', compact('data_transaksi'));
     }
 
     public function addqty($id){

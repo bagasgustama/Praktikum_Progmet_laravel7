@@ -78,6 +78,8 @@ Route::group(['middleware'=> ['auth']],function (){
     Route::post('/profile/uploadfoto/{id}','MainController@uploadfotoprofile');
 
     Route::get('/transaksi', 'MainController@tampiltransaksi')->name('profile');
+    Route::get('/statuspemesanan/{id}','CheckoutController@konfirmasiproduk');
+    Route::post('/review','MainController@tambahreview');
 
 
 

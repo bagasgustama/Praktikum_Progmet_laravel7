@@ -19,17 +19,17 @@
       <div class="profile-main text-center">
           @if ($data_transaksi->status == 'canceled' || $data_transaksi->status == 'expired' || $data_transaksi->status == 'verified' || $data_transaksi->status == 'delivered'  || $data_transaksi->status == 'success' )
               @if ($data_transaksi->status == 'verified' || $data_transaksi->status == 'delivered'  || $data_transaksi->status == 'success' )
-              <h1 class="text-uppercase text-blue" style="font-weight: bolder; padding-bottom: 70px; font-size: 100px">
+              <h1 class="text-uppercase" style="font-weight: bolder; padding-bottom: 70px; font-size: 80px">
                   Pembayaran Berhasil
               </h1>
 
               @else
-              <h1 class="text-uppercase text-blue" style="font-weight: bolder; padding-bottom: 70px; font-size: 100px">
+              <h1 class="text-uppercase" style="font-weight: bolder; padding-bottom: 70px; font-size: 80px">
                   Pembayaran gagal
               </h1>
               @endif
           @else
-              <h1 class="text-uppercase text-blue" style="font-weight: bolder; padding-bottom: 70px; font-size: 100px">
+              <h1 class="text-uppercase" style="font-weight: bolder; padding-bottom: 70px; font-size: 80px">
                   {{ $deadline }}
               </h1>
           @endif
@@ -38,9 +38,9 @@
     @if ($data_transaksi->status == 'canceled' || $data_transaksi->status == 'expired' || $data_transaksi->status == 'verified' || $data_transaksi->status == 'delivered'  || $data_transaksi->status == 'success' )
       @if ($data_transaksi->status == 'verified' || $data_transaksi->status == 'delivered' || $data_transaksi->status == 'success' )
       <span class="btn-panel col-md-4" >
-          <form action="/kategori">
+          <form action="/produk">
               <button type="submit" class="sdw-wrap btn-primary">
-                  <a  class="sdw-hover btn btn btn-material btn-view" style="color: white"><i class="icon icofont icofont-check-circled"></i><span class="body" >Kembali ke halaman utama</span></a>
+                  <a  class="sdw-hover btn btn btn-material btn-view" style="color: white"><i class="icon icofont icofont-check-circled"></i><span class="body" >Continue Shopping</span></a>
 
               </button> 
           </form>
@@ -48,7 +48,7 @@
       <span class="btn-panel col-md-4" >
           <div class="form-group">
               <button type="submit" class="sdw-wrap btn-success">
-                  <a  href="/produk/sukses-bayar/{{ $data_transaksi->id }}" class="sdw-hover btn btn btn-material btn-success" style="color: white"><i class="icon icofont icofont-vehicle-delivery-van"></i><span class="body" >Tracking Barang</span></a>
+                  <a  href="/sukses-bayar/{{ $data_transaksi->id }}" class="sdw-hover btn btn btn-material btn-success" style="color: white"><i class="icon icofont icofont-vehicle-delivery-van"></i><span class="body" >Tracking</span></a>
 
               </button> 
           </div>

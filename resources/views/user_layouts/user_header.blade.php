@@ -47,16 +47,16 @@
 
                             </div>
                         @else
-                        <div class="cart box_1">
+                        {{-- <div class="cart box_1">
                           <a href="/cart">
                             <h3> <div class="total">
-                              {{-- <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div> --}}
+                              <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
                               <img src="images/bag.png" alt="" />
                             </h3>
                           </a>
                           <p><a href="javascript:;" class="simpleCart_empty">Cart</a></p>
                           <div class="clearfix"> </div>
-                        </div>
+                        </div> --}}
                           <div style="margin-left: 20px" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                               <a class="dropdown-item" href="{{ route('user.logout') }}"
                                   onclick="event.preventDefault();
@@ -69,7 +69,6 @@
                                   @csrf
                               </form>
                           </div>
-                          <a  href="/profile" >Profile</a>
                         @endif
                     </li>
                     @endguest
@@ -111,7 +110,10 @@
             <!-- Mega Menu -->
             <li class="dropdown active">
             <li><a href="/produk">Products</a></li>	
+            @if(\Illuminate\Support\Facades\Auth::guard('web')->check())
             <li><a href="/transaksi">Transaction</a></li>	
+            <li><a href="/profile">Profile</a></li>	
+            @endif
             <!-- Mega Menu -->
           </ul>
         </div>
@@ -136,6 +138,19 @@
           <!-- //search-scripts -->
       </div>
       <div class="header-right">
+
+        @if(\Illuminate\Support\Facades\Auth::guard('web')->check())
+        <div class="cart box_1">
+          <a href="/cart">
+            <h3> <div class="total">
+              {{-- <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div> --}}
+              <img src="images/bag.png" alt="" />
+            </h3>
+          </a>
+          <p><a href="javascript:;" class="simpleCart_empty">Cart</a></p>
+          <div class="clearfix"> </div>
+        </div>
+        @endif
         {{-- <div class="cart box_1">
           <a href="checkout.html">
             <h3> <div class="total">

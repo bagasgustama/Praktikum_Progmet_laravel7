@@ -96,7 +96,7 @@ class MainController extends Controller
 
             $nama_image = md5(now().'_').$foto->getClientOriginalName();
             // $nama_image = now().'_'.$foto->getClientOriginalName();
-            $foto->storeAs('img/fotoprofilepengguna',$nama_image);
+            $foto->storeAs('/public/app/img/fotoprofilepengguna',$nama_image);
 
             $data_user = User::find($id);
             $data_user->profile_image = $nama_image;
@@ -132,7 +132,8 @@ class MainController extends Controller
         ProductReview::create($products);
         
 
-        return redirect()->back();
+        // return redirect()->back();
+        return redirect('/');
 
     }
 

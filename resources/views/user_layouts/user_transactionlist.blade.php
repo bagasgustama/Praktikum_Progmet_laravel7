@@ -99,7 +99,7 @@
 
                   <td class="text-center">
                       <!-- info btn -->
-                      <a href="/produk/upload-pembayaran/{{ $transaksi->id}}" class=" btn btn-primary btn-sm">
+                      <a href="/statuspemesanan/{{ $transaksi->id}}" class=" btn btn-primary btn-sm">
                           <i class="fas fa-eye">Detail</i>
                       </a>
                   </td>

@@ -20,7 +20,7 @@
 
     <div class="image">
         {{-- <img src="{{asset('images/2.png') }}" class="img-circle main" width="170px" height="170px" alt="Avatar"> --}}
-        <img src="{{ Auth::user()->image }}" class="img-circle main" width="170px" height="170px" alt="Avatar">
+        <img src="{{ Auth::user()->image }}" class="" width="170px" height="170px" >
     </div>
     @else
     <div class="form-group" style="margin-top: 100px">

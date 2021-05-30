@@ -2,9 +2,7 @@
 @section('content')
 
 <style>.new-collections-grid1:nth-child(2){margin-top: 0px;}</style>
-<!-- 
-SLIDESHOW
-=============================================== -->
+
 <!-- breadcrumbs -->
 <div class="breadcrumbs">
     <div class="container">
@@ -22,9 +20,6 @@ SLIDESHOW
           @include('user_layouts.user_sidebar')
         </div>
         <div class="col-md-8 products-right">
-            {{-- <div class="products-right-grid">
-              
-            </div> --}}
             <div class="products-right-grids-bottom">
               @foreach ($data_produk as $produkrow)
               <div class="row">
@@ -37,42 +32,6 @@ SLIDESHOW
                           <div class="new-collections-grid1-image-pos products-right-grids-pos">
                               {{-- <a href="/produk/{{ $produk["id"] }}/view">View</a> --}}
                           </div>
-                          <div class="new-collections-grid1-right products-right-grids-pos-right">
-                            <div class="rating1">
-                              <div class="description">
-                              <span class="starRating" style="height: 23px">
-                    
-                                @if ($produk->reviewproduk->avg('rate'))
-                            
-                                  @for ($i = 0; $i < 5; $i++)
-                                      @if (floor($produk->reviewproduk->avg('rate')) - $i >= 1)
-                                      {{--Full Start--}}
-                                      <img src="{{asset('images/2.png')}}" data-imagezoom="true" >
-                                          {{-- <i class="fas fa-star"> </i> --}}
-                                      @elseif ($produk->reviewproduk->avg('rate') - $i > 0)
-                                      {{--Half Start--}}
-                                      <img src="{{asset('images/2.png')}}" data-imagezoom="true" >
-                    
-                                          {{-- <i class="fas fa-star-half-alt text-warning"> </i> --}}
-                                      @else
-                                      {{--Empty Start--}}
-                                      <img src="{{asset('images/1.png')}}" data-imagezoom="true" >
-                    
-                                          {{-- <i class="far fa-star text-warning"> </i> --}}
-                                      @endif
-                                  @endfor
-                    
-                                @else
-                                  @for ($i = 0; $i < 5; $i++)
-                                  <img src="{{asset('images/1.png')}}" data-imagezoom="true" >
-                    
-                                  @endfor
-                    
-                                @endif
-                              </span>
-                            </div>
-                            </div>
-                          </div>
                       </div>
                       <h4><a href="/produk/{{ $produk["id"] }}/view">{{ $produk["product_name"] }}</a></h4>
                       <p>{{ Str::limit($produk["description"], 30, $end='...') }}</p>
@@ -84,23 +43,91 @@ SLIDESHOW
                             @php
                             $nilaidiskon = ($diskonbarang->percentage / 100)* $produk->price
                             @endphp
+                            <div class="rating1">
+                              <span class="starRating" style="height: 23px">
+
+                                @if ($produk->reviewproduk->avg('rate'))
+
+                                  @for ($i = 0; $i < 5; $i++)
+                                      @if (floor($produk->reviewproduk->avg('rate')) - $i >= 1)
+                                      <img src="{{asset('images/2.png')}}" data-imagezoom="true" >
+                                      @elseif ($produk->reviewproduk->avg('rate') - $i > 0)
+                                      <img src="{{asset('images/2.png')}}" data-imagezoom="true" >
+                                      @else
+                                      <img src="{{asset('images/1.png')}}" data-imagezoom="true" >
+                                      @endif
+                                  @endfor
+                                @else
+                                  @for ($i = 0; $i < 5; $i++)
+                                  <img src="{{asset('images/1.png')}}" data-imagezoom="true" >
+
+                                  @endfor
+
+                                @endif
+                              </span>
+                            </div>
 
                             <p><i>Rp.{{ number_format($produk["price"]) }}</i><span class="">{{$diskonbarang["percentage"] }}%</span><span class="item_price" style="font-weight: bold">Rp.{{ number_format($produk["price"]-$nilaidiskon) }}</span><a class="item_add" style="backgroud-color:red; color:red;" href="/produk/{{ $produk["id"] }}/view">View Product</a></p>
 
                         @else
-                            
+                        <div class="rating1">
+                          <span class="starRating" style="height: 23px">
+                
+                            @if ($produk->reviewproduk->avg('rate'))
+                        
+                              @for ($i = 0; $i < 5; $i++)
+                                  @if (floor($produk->reviewproduk->avg('rate')) - $i >= 1)
+                                  <img src="{{asset('images/2.png')}}" data-imagezoom="true" >
+                                  @elseif ($produk->reviewproduk->avg('rate') - $i > 0)
+                                  <img src="{{asset('images/2.png')}}" data-imagezoom="true" >
+                                  @else
+                                  <img src="{{asset('images/1.png')}}" data-imagezoom="true" >
+                                  @endif
+                              @endfor
+                
+                            @else
+                              @for ($i = 0; $i < 5; $i++)
+                              <img src="{{asset('images/1.png')}}" data-imagezoom="true" >
+                
+                              @endfor
+                
+                            @endif
+                          </span>
+                        </div>
                             <p><span class="item_price" style="font-weight: bold">Rp.{{ number_format($produk["price"]) }}</span><a class="item_add" style="backgroud-color:red; color:red;" href="/produk/{{ $produk["id"] }}/view">View Product</a></p>
 
                         @endif
 
                     
                     @empty
-                       
+                    <div class="rating1">
+                      <span class="starRating" style="height: 23px">
+            
+                        @if ($produk->reviewproduk->avg('rate'))
+                    
+                          @for ($i = 0; $i < 5; $i++)
+                              @if (floor($produk->reviewproduk->avg('rate')) - $i >= 1)
+                              <img src="{{asset('images/2.png')}}" data-imagezoom="true" >
+                              @elseif ($produk->reviewproduk->avg('rate') - $i > 0)
+                              <img src="{{asset('images/2.png')}}" data-imagezoom="true" >
+                              @else
+                              <img src="{{asset('images/1.png')}}" data-imagezoom="true" >
+                              @endif
+                          @endfor
+            
+                        @else
+                          @for ($i = 0; $i < 5; $i++)
+                          <img src="{{asset('images/1.png')}}" data-imagezoom="true" >
+            
+                          @endfor
+            
+                        @endif
+                      </span>
+                    </div>
                         <p><span class="item_price" style="font-weight: bold">Rp.{{ number_format($produk["price"]) }}</span><a class="item_add" style="backgroud-color:red; color:red;" href="/produk/{{ $produk["id"] }}/view">View Product</a></p>
 
                     @endforelse
 
-                          {{-- <p><i>Rp.{{ number_format($produk["price"]) }}</i><span class="item_price">Rp.{{ number_format($produk["price"]) }}</span><a class="item_add" style="backgroud-color:red; color:red;" href="#">Buy Now </a><a class="item_add" href="#">add to cart </a></p> --}}
                       </div>
                     </div>
                   @endforeach
@@ -111,25 +138,6 @@ SLIDESHOW
                 
                 <div class="clearfix"> </div>
             </div>
-            {{-- <nav class="numbering animated wow slideInRight" data-wow-delay=".5s">
-              <ul class="pagination paging">
-                <li>
-                  <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                  <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-              </ul>
-            </nav> --}}
         </div>
         <div class="clearfix"> </div>
     </div>

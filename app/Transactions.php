@@ -24,14 +24,6 @@ class Transactions extends Model
         return $this->belongsToMany(Products::class,'transaction_details','transaction_id','product_id');
     }
 
-    // public function detail_transaksi_(){
-    //     return $this->hasMany(TransactionsDetail::class,'transaction_id','id');
-    // }
-
-    // public function getimageattribute(){
-    //     return $this->image_name? asset('storage/img/buktipembayaran/'.$this->image_name):asset('img-001.jpg');
-    // }
-
     public function getimageattribute(){
         return $this->proof_of_payment? asset('storage/img/buktipembayaran/'.$this->proof_of_payment):asset('img-001.jpg');
     }

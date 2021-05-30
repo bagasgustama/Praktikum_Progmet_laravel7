@@ -15,6 +15,9 @@
                         @endif
 
                         You are logged in!
+                        <div>
+                            <a href="/">Go to shopping</a>
+                        </div>
                     </div>
                 </div>
             </div>

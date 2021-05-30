@@ -11,201 +11,158 @@
   </div>
 </div>
 <!-- //breadcrumbs -->
-<!-- checkout -->
+
 <div class="checkout">
   <div class="container">
     <h3 class="animated wow slideInLeft" data-wow-delay=".5s">Your shopping cart contains: <span>{{$data_cart->count()}} Product</span></h3>
     <div class="checkout-right animated wow slideInUp" data-wow-delay=".5s">
       
       @if ($data_cart->count()==0)
-      <!-- List body -->              
-      <!-- Item -->
-      
         <h2 class="text-uppercase text-blue" style="font-weight: bolder">
           Tidak Terdapat Barang di dalam Cart
         </h2>
           
       @else
-      <table class="timetable_sub">
-        <thead>
-          <tr>
-            <th>Product</th>
-            <th>Quality</th>
-            <th>Product Name</th>
-            <th>Price/Qty</th>
-            <th>Total Price</th>
-            <th>Remove</th>
-          </tr>
-        </thead>
+        <table class="timetable_sub">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Quality</th>
+              <th>Product Name</th>
+              <th>Price/Qty</th>
+              <th>Total Price</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
 
-      @foreach ($data_cart as $cart)
-        <tr class="rem1">
-          <td class="invert-image"><a href="single.html"><img src="images/22.jpg" alt=" " class="img-responsive" /></a></td>
-          <td class="invert">
-            <div class="quantity"> 
-              <div class="quantity-select">           
-                
-                <div id="dec{{ $cart->id }}" class=" entry value-minus">
-                  <span type="button" onclick="minusQty('{{ $cart->id }}')">
-                      <i class="icofont icofont-caret-down"></i>
-                  </span>
-                </div>
-                
-                @forelse ($cart->produk->diskon as $diskonbarang)
-                
-                <input type="text" class="incdec input-qty input-text"
-                name="qty[]" id="qty{{$cart->id}}" value="{{$cart->qty}}"/>
-                
-                @empty
-                
-                <input type="text" class="incdec input-qty input-text"
-                name="qty[]" id="qty{{$cart->id}}" value="{{$cart->qty}}"/>
-                
-                @endforelse
-                
-                <div id="inc{{ $cart->id }}" class=" entry value-plus active">
-                  <span type="button" onclick="addQty('{{ $cart->id }}')">
-                      <i class="icofont icofont-caret-up"></i>
-                  </span>
-                </div>
+          <tbody>
 
-                {{-- <div class="entry value-minus">&nbsp;</div>
-                <div class="entry value"><span>1</span></div>
-                <div class="entry value-plus active">&nbsp;</div> --}}
-              </div>
-            </div>
-          </td>
-          <td class="invert">{{ $cart->produk->product_name }}</td>
-          <td class="invert">
-            
-            @foreach ($cart->produk->diskon as $diskonbarang)
-            @if (date('Y-m-d')>= $diskonbarang->start && date('Y-m-d')< $diskonbarang->end)
-                {{-- <span class="disclam hidden-sm">Sale -{{ $diskonbarang->percentage }}%</span> --}}
-            @endif
-        @endforeach
-  
-        @forelse ($cart->produk->diskon as $diskonbarang)
-  
-        @php
-            $nilaidiskon = ($diskonbarang->percentage / 100)* $cart->produk->price
-        @endphp
-  
-        @if (date('Y-m-d')>= $diskonbarang->start && date('Y-m-d')< $diskonbarang->end)
-            <span class="price">
-                <span class="prc" >
-                    <i>Rp.</i>
-                    <span name="price">{{ number_format($cart->produk->price-$nilaidiskon) }}</span>
-                </span>
-            </span>
-  
-            {{-- <span class="old hidden-xs hidden-sm">
-                <i>Rp.</i>
-                <span>
-                    {{ number_format($cart->produk->price) }}
-                </span>
-            </span> --}}
-            
-        @else
-            <!-- Currency -->
-            <span class="price">
-                <span class="prc" >
-                    <i>Rp.</i>
-                    <span name="price">{{ number_format($cart->produk->price) }}</span>
-                </span>
-            </span>
-            
-        @endif
-    
-        @empty
-            
-        <!-- Currency -->
-        <span class="price">
-            <span class="prc" >
-                <i>Rp.</i>
-                <span name="price">{{ number_format($cart->produk->price) }}</span>
-            </span>
-        </span>
-  
-        @endforelse
-          </td>
-          <td class="invert">
-            @forelse ($cart->produk->diskon as $diskonbarang)
-              @if (date('Y-m-d')>= $diskonbarang->start && date('Y-m-d')< $diskonbarang->end)
-                  <i>Rp.</i>
-                  <span id="hargadiskon{{ $cart->id }}" class="total">
-                      {{ number_format(($cart->produk->price-$nilaidiskon)*$cart->qty) }}
-                  </span>
+            @foreach ($data_cart as $cart)
+              <tr class="rem1">
+
+                <td class="invert-image"><a href="single.html"><img src="images/22.jpg" alt=" " class="img-responsive" /></a>
+                </td>
+
+                <td class="invert">
+                  <div class="quantity"> 
+                    <div class="quantity-select">           
+                      
+                      <div id="dec{{ $cart->id }}" class=" entry value-minus">
+                        <span type="button" onclick="minusQty('{{ $cart->id }}')">
+                            <i class="icofont icofont-caret-down"></i>
+                        </span>
+                      </div>
+                      
+                      @forelse ($cart->produk->diskon as $diskonbarang)
+                      
+                      <a><input type="text" class="incdec input-qty input-text" style="width: 40px; height: 30px""
+                      name="qty[]" id="qty{{$cart->id}}" value="{{$cart->qty}}"/></a>
+                      
+                      @empty
+                      
+                      <a><input type="text" class="incdec input-qty input-text" style="width: 40px; height: 30px"
+                      name="qty[]" id="qty{{$cart->id}}" value="{{$cart->qty}}"/></a>
+                      
+                      @endforelse
+                      
+                      <div id="inc{{ $cart->id }}" class=" entry value-plus active">
+                        <span type="button" onclick="addQty('{{ $cart->id }}')">
+                            <i class="icofont icofont-caret-up"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+
+                <td class="invert">{{ $cart->produk->product_name }}
+                </td>
+
+                <td class="invert">
                   
-              @else
-                  <i>Rp.</i>
-                  <span id="hargadiskon{{ $cart->id }}" class="total">
-                      {{ number_format(($cart->produk->price)*$cart->qty) }}
-                  </span>
-                  
-              @endif
-
-              @empty
+                  @foreach ($cart->produk->diskon as $diskonbarang)
+                    @if (date('Y-m-d')>= $diskonbarang->start && date('Y-m-d')< $diskonbarang->end)
+                    @endif
+                  @endforeach
+        
+                  @forelse ($cart->produk->diskon as $diskonbarang)
+            
+                  @php
+                      $nilaidiskon = ($diskonbarang->percentage / 100)* $cart->produk->price
+                  @endphp
+            
+                  @if (date('Y-m-d')>= $diskonbarang->start && date('Y-m-d')< $diskonbarang->end)
+                      <span class="price">
+                          <span class="prc" >
+                              <i>Rp.</i>
+                              <span name="price">{{ number_format($cart->produk->price-$nilaidiskon) }}</span>
+                          </span>
+                      </span>
+                  @else
+                      <span class="price">
+                          <span class="prc" >
+                              <i>Rp.</i>
+                              <span name="price">{{ number_format($cart->produk->price) }}</span>
+                          </span>
+                      </span>
+                  @endif
               
-                  <i>Rp.</i>
-                  <span id="harga{{ $cart->id }}" name="price" class="total">
-                      {{ number_format(($cart->produk->price)*$cart->qty) }}
+                  @empty
+                  <span class="price">
+                      <span class="prc" >
+                          <i>Rp.</i>
+                          <span name="price">{{ number_format($cart->produk->price) }}</span>
+                      </span>
                   </span>
-
-              @endforelse
-
-          </td>
-          <td class="invert">
             
-            <div class="rem">
-              <div class="close1"> 
-                
-                <form action="/produk/cart/{{ $cart->id }}/deletecart" method="post">
-                  @csrf
-                  @method('DELETE')
-                      <button type="submit" class="btn btn-danger" onclick="return confirm('Anda yakin ingin hapus data ini?')">X
-                          <i class="icofont icofont-close-line"></i>
-                      </button>
-              </form>
+                  @endforelse
+                </td>
 
-              </div>
-            </div>
-            {{-- <script>$(document).ready(function(c) {
-              $('.close1').on('click', function(c){
-                $('.rem1').fadeOut('slow', function(c){
-                  $('.rem1').remove();
-                });
-                });	  
-              });
-             </script> --}}
-          </td>
-        </tr>
-        @endforeach
-          <!--quantity-->
-            <script>
-            $('.value-plus').on('click', function(){
-              var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
-              divUpd.text(newVal);
-            });
+                <td class="invert">
+                  @forelse ($cart->produk->diskon as $diskonbarang)
+                    @if (date('Y-m-d')>= $diskonbarang->start && date('Y-m-d')< $diskonbarang->end)
+                        <i>Rp.</i>
+                        <span id="hargadiskon{{ $cart->id }}" class="total">
+                            {{ number_format(($cart->produk->price-$nilaidiskon)*$cart->qty) }}
+                        </span>
+                        
+                    @else
+                        <i>Rp.</i>
+                        <span id="hargadiskon{{ $cart->id }}" class="total">
+                            {{ number_format(($cart->produk->price)*$cart->qty) }}
+                        </span>
+                        
+                    @endif
 
-            $('.value-minus').on('click', function(){
-              var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
-              if(newVal>=1) divUpd.text(newVal);
-            });
-            </script>
-          <!--quantity-->
-      </table>
-      <div style="margin-top: 30px" class="checkout-left-basket animated wow slideInLeft" data-wow-delay=".5s">
-        {{-- @if({{$cart->count()}} == 0) --}}
-        <a href="/checkout"><h4>Continue to checkout</h4></a>
-        {{-- @endif --}}
-        {{-- <ul>
-          <li>Product1 <i>-</i> <span>$250.00 </span></li>
-          <li>Product2 <i>-</i> <span>$290.00 </span></li>
-          <li>Product3 <i>-</i> <span>$299.00 </span></li>
-          <li>Total Service Charges <i>-</i> <span>$15.00</span></li>
-          <li>Total <i>-</i> <span>$854.00</span></li>
-        </ul> --}}
-      </div>
+                    @empty
+                        <i>Rp.</i>
+                        <span id="harga{{ $cart->id }}" name="price" class="total">
+                            {{ number_format(($cart->produk->price)*$cart->qty) }}
+                        </span>
+
+                  @endforelse
+                </td>
+
+                <td class="invert">
+                  
+                  <div class="rem">
+                    <div class="close1"> 
+                      <form action="/produk/cart/{{ $cart->id }}/deletecart" method="post">
+                        @csrf
+                        @method('DELETE')
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Anda yakin ingin hapus data ini?')">X
+                                <i class="icofont icofont-close-line"></i>
+                            </button>
+                      </form>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
+        <div style="margin-top: 30px" class="checkout-left-basket animated wow slideInLeft" data-wow-delay=".5s">
+          <a href="/checkout"><h4>Continue to checkout</h4></a>
+        </div>
       @endif
     </div>
     <div class="checkout-left">	
@@ -216,19 +173,10 @@
     </div>
   </div>
 </div>
-<!-- //checkout -->
-
 @endsection
 
 @section('after-script')
 <script>
-    jQuery(document).ready(function() {       
-        jQuery.ajaxSetup({        
-            headers: {            
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')        
-            }    
-        });    
-    });
 
     function formatRupiah(angka, prefix){
         var number_string = angka.replace(/[^,\d]/g, '').toString(),
@@ -236,8 +184,7 @@
         sisa     		= split[0].length % 3,
         rupiah     		= split[0].substr(0, sisa),
         ribuan     		= split[0].substr(sisa).match(/\d{3}/gi);
-
-        // tambahkan titik jika yang di input sudah menjadi angka ribuan
+        
         if(ribuan){
             separator = sisa ? '.' : '';
             rupiah += separator + ribuan.join('.');
@@ -293,16 +240,24 @@
             $(`#harga${cart_id}`).html(formatRupiah(total.toString()));
         }
 
-        // console.log(newValue);
     });
-    //newValue merupakan variabel quantity barang\
+    
+    jQuery(document).ready(function() {       
+        jQuery.ajaxSetup({        
+            headers: {            
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')        
+            }    
+        });    
+    });
 
     function addQty(id){
-        var url = '/produk/addqty/'+id;
+      var url = '/produk/addqty/'+id;
+      // console.log(url);
         $.ajax({
             url:url,
             method : 'POST',
             success: function(response) {
+              // console.log('a');
                 if(response.status == 0){
                     alert('Stock barang habis');
                 }else{
@@ -311,7 +266,7 @@
                     $('#harga'+id).html(response.nilaidiskon);
                 }
             }
-        })
+        });
     }
 
     function minusQty(id){
@@ -328,9 +283,30 @@
                     $('#harga'+id).html(response.nilaidiskon);
                 }
             }
-        })
+        });
     }
 
+    $('.value-plus').on('click', function(){
+      var cart_id = $(this).attr('id').substring(3);
+      var qty = parseInt($(`#qty${cart_id}`).val());
+      qty += 1;
+      $(`#qty${cart_id}`).val(qty);
+      console.log(qty);
+      var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
+      divUpd.text(newVal);
+      addQty(cart_id);
+    });
+
+    $('.value-minus').on('click', function(){
+      var cart_id = $(this).attr('id').substring(3);
+      var qty = parseInt($(`#qty${cart_id}`).val());
+      qty -= 1;
+      $(`#qty${cart_id}`).val(qty);
+      console.log(qty);
+      var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
+      if(newVal>=1) divUpd.text(newVal);
+      minusQty(cart_id);
+    });
 </script>
     
 @endsection

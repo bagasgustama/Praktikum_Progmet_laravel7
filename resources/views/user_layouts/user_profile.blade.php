@@ -12,12 +12,7 @@
     
     </h1>
     @if (Auth::user()->profile_image != null)
-    {{-- <div class="image">
-        <img src="{{ asset('pengguna/html/images/shop/profile-02.jpg') }}" class="img-circle main" width="relative" height="170px" alt="Avatar">
-    </div> --}}
-
     <div class="image">
-        {{-- <img src="{{asset('images/2.png') }}" class="img-circle main" width="170px" height="170px" alt="Avatar"> --}}
         <img src="{{ Auth::user()->image }}" class="" width="170px" height="170px" >
     </div>
     @else
@@ -27,9 +22,6 @@
           <a href="/edit_profile/{{Auth::user()->id}}" class=" btn btn-yellow btn-sm">
               <i class="">Edit Foto Profile</i>
           </a>
-          {{-- <button type="button" class="btn  btn-primary">
-              <i class="icofont icofont-stylish-right"></i>
-          </button> --}}
     </div>
     @endif
     <h1 style="margin-top: 20px; margin-bottom:30px; font-weight:bold;">{{ Auth::user()->name }}</h1>

@@ -12,23 +12,6 @@ use Illuminate\Support\Facades\Auth;
 class BuyNowController extends Controller
 {
 
-    public function cartproduk(){
-        $data_cart= Carts::where('user_id', Auth::user()->id)->where('status', 'notyet')->get();
-
-        return view('user_layouts.user_cardpage_1', compact('data_cart'));
-    }
-
-    public function storebuynow(Request $request){
-        // dd($request);
-        $cart = new Carts();
-        $cart->user_id=Auth::user()->id;
-        $cart->product_id=$request->id_produk;
-        $cart->qty=1;
-        $cart->status='notyet';
-        $cart->save();
-        return redirect('/produk/buynow');
-    }
-
     public function buynow(){
         $price=0;
         $total=0;
@@ -55,15 +38,18 @@ class BuyNowController extends Controller
         }
         $sub_price = $total;
 
-        // dd($sub_price);
-        // echo($berat_total);
-
         return view('user_layouts.user_checkoutnow',compact('data_cart','data_provinsi','data_kota','berat_total','data_kurir','sub_price','total'));
     }
 
-    public function hapusbuynow($id){
-        $cart = Carts::find($id);
-        $cart->delete();
-        return redirect('/kategori');
+    public function storebuynow(Request $request){
+        // dd($request);
+        $cart = new Carts();
+        $cart->user_id=Auth::user()->id;
+        $cart->product_id=$request->id_produk;
+        $cart->qty= $request->qtynow;
+        $cart->status='notyet';
+        $cart->save();
+        return redirect('/produk/buynow');
     }
+
 }

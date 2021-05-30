@@ -10,7 +10,7 @@
 	</div>
 </div>
 <!-- //breadcrumbs -->
-<!-- single -->
+
 <div class="single">
 	<div class="container">
 		
@@ -20,45 +20,8 @@
 					<div class="new-collections-grid1-image">
 						<a class="product-image"><img src="{{asset('images/19.jpg')}}" alt=" " class="img-responsive"></a>
 						 
-							{{-- <div class="owl-carousel image image-nav">
-								 
-									@foreach ($produk->productimage as $produk_detail)
-									<div class="item">
-											<img src="images/19.jpg" alt="">
-									</div>
-									@endforeach
-								 
-							</div> --}}
-
 					</div>
-
 			</div>
-				{{-- <div class="flexslider">
-					<ul class="slides">
-						<li data-thumb="images/si.jpg">
-							<div class="thumb-image"> <img src="images/si.jpg" data-imagezoom="true" class="img-responsive"> </div>
-						</li>
-						<li data-thumb="images/si1.jpg">
-							 <div class="thumb-image"> <img src="images/si.jpg" data-imagezoom="true" class="img-responsive"> </div>
-						</li>
-						<li data-thumb="images/si2.jpg">
-							 <div class="thumb-image"> <img src="images/si.jpg" data-imagezoom="true" class="img-responsive"> </div>
-						</li> 
-					</ul>
-				</div> --}}
-				<!-- flixslider -->
-					{{-- <script defer src="{{asset('js/jquery.flexslider.js')}}"></script>
-					<link rel="stylesheet" href="{{asset('css/flexslider.css')}}" type="text/css" media="screen" />
-					<script> --}}
-					{{-- // Can also be used with $(document).ready()
-					// $(window).load(function() {
-					// 	$('.flexslider').flexslider({
-					// 	animation: "slide",
-					// 	controlNav: "thumbnails"
-					// 	});
-					// });
-					// </script> --}}
-				<!-- flixslider -->
 			</div>
 			<div class="col-md-7 single-right-left simpleCart_shelfItem animated wow slideInRight" data-wow-delay=".5s">
 				<h3>{{ $produk->product_name}}</h3>
@@ -86,8 +49,6 @@
 
 		@endforelse
 
-
-				{{-- <h4><span class="item_price">Rp.{{ number_format($produk["price"]) }}</span></h4> --}}
 				<div class="rating1">
 					<div class="description">
 					<h5 ><i>Rating</i></h5>
@@ -97,19 +58,11 @@
         
 							@for ($i = 0; $i < 5; $i++)
 									@if (floor($produk->reviewproduk->avg('rate')) - $i >= 1)
-									{{--Full Start--}}
 									<img src="{{asset('images/2.png')}}" data-imagezoom="true" >
-											{{-- <i class="fas fa-star"> </i> --}}
 									@elseif ($produk->reviewproduk->avg('rate') - $i > 0)
-									{{--Half Start--}}
 									<img src="{{asset('images/2.png')}}" data-imagezoom="true" >
-
-											{{-- <i class="fas fa-star-half-alt text-warning"> </i> --}}
 									@else
-									{{--Empty Start--}}
 									<img src="{{asset('images/1.png')}}" data-imagezoom="true" >
-
-											{{-- <i class="far fa-star text-warning"> </i> --}}
 									@endif
 							@endfor
 
@@ -137,16 +90,17 @@
 				<div class="occasion-cart">
 					<form action="/produk/store/buynow" method="POST">
 						@csrf
+						<div style="margin-bottom: 20px"><span>Qty</a></span>
+						<div style="margin-top: 5px;margin-bottom: 20px">
+							<input type="text" value="1" name="qtynow" style="width: 30px"></div>
 						<input type="hidden" value="{{ $produk->id }}" name="id_produk">
 						<button class="text-blue" style="width: 150px; padding-right: 41px" type="submit">Buy Now</button>
-				</form>
+					</form>
 					<form action="/cart/store" method="POST">
 						@csrf
 						<input type="hidden" value="{{ $produk->id }}" name="id_produk">
-						<button class="text-blue" style="width: 150px; padding-right: 41px; margin-top:20px;" type="submit">add to cart</button>
+						<button class="text-blue" style="width: 150px; padding-right: 41px; margin-top:20px;" type="submit">Add to cart</button>
 					</form>
-					{{-- <a class="item_add mr-2" href="#">Buy Now </a>
-					<a class="item_add" href="#">add to cart </a> --}}
 				</div>
 			</div>
 			<div class="clearfix"> </div>
@@ -178,9 +132,9 @@
 											@foreach ($produk->reviewproduk as $review)
 											<li class="media">
 													<div class="media-left">
-															{{-- <a href="#">
-																	<img class="media-object" src="{{ $review->user->image }}" alt="...">
-															</a> --}}
+															<a href="#">
+																	<img class="media-object" src="{{ $review->user->image }}" alt="..." width="70px" height="70px">
+															</a>
 													</div>
 													<div class="media-body">
 															<h3 class="media-heading" style="font-weight: bold">

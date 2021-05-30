@@ -12,14 +12,12 @@ class CartController extends Controller
     public function cartproduk(){
         
         $data_cart= Carts::where('user_id', Auth::user()->id)->where('status', 'notyet')->get();
-
-        // dd($data_cart);
-
+        
         return view('user_layouts.user_cart', compact('data_cart'));
     }
 
-    public function store(Request $request){
-        // dd($request);
+    public function storecart(Request $request){
+        
         $cart = new Carts();
         $cart->user_id=Auth::user()->id;
         $cart->product_id=$request->id_produk;

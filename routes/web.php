@@ -46,42 +46,36 @@ Auth::routes();
 
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/produk','MainController@tampilproduk');
-Route::get('/produk/{produk:id}/view','MainController@tampildetailproduk');
-Route::get('/kategori/{product_categories:id}','MainController@kategorifilter');
+Route::get('/produk','MarketController@viewproduct');
+Route::get('/produk/{produk:id}/view','MarketController@viewdetailproduct');
+Route::get('/kategori/{product_categories:id}','MarketController@viewproductkategories');
 
 
 Route::group(['middleware'=> ['auth']],function (){
 
     Route::get('/cart','CartController@cartproduk');
-    Route::post('/cart/store','CartController@store');
+    Route::post('/cart/store','CartController@storecart');
     Route::delete('/produk/cart/{cart:id}/deletecart','CartController@hapuscart');
-    Route::get('/checkout','CheckoutController@checkoutproduk');
-    Route::post('/checkout-produk','CheckoutController@store');
-    Route::get('/upload-bukti/{id}','CheckoutController@konfirmasiproduk');
-
-    Route::post('uploadpembayaran/{id}','CheckoutController@uploadpembayaran');
-    Route::get('sukses-bayar/{id}','CheckoutController@suksesbayar');
-
-    
-    Route::post('/produk/cekongkir','CheckoutController@cekongkir');
-    Route::get('/produk/buynow','BuyNowController@buynow');
-    Route::post('/produk/store/buynow','BuyNowController@storebuynow');
-    Route::post('/produk/cancel/{id}','CheckoutController@cancelproduk');
-
     Route::post('/produk/addqty/{id}','CartController@addqty');
     Route::post('/produk/minusqty/{id}','CartController@minusqty');
 
-    
-    Route::get('/profile', 'MainController@tampilprofile')->name('profile');
-    Route::get('/edit_profile/{id}','MainController@editfotoprofile');
-    Route::post('/profile/uploadfoto/{id}','MainController@uploadfotoprofile');
+    Route::get('/checkout','CheckoutController@checkoutproduk');
+    Route::post('/checkout-produk','CheckoutController@storecheckout');
+    Route::post('/produk/cekongkir','CheckoutController@cekongkir');
+    Route::get('/upload-bukti/{id}','CheckoutController@confirmproduct');
+    Route::post('uploadpembayaran/{id}','CheckoutController@uploadpayment');
+    Route::get('sukses-bayar/{id}','CheckoutController@successpayment');
+    Route::post('/produk/cancel/{id}','CheckoutController@cancelproduct');
+    Route::get('/statuspemesanan/{id}','CheckoutController@confirmproduct');
 
-    Route::get('/transaksi', 'MainController@tampiltransaksi')->name('profile');
-    Route::get('/statuspemesanan/{id}','CheckoutController@konfirmasiproduk');
-    Route::post('/review','MainController@tambahreview');
+    Route::get('/produk/buynow','BuyNowController@buynow');
+    Route::post('/produk/store/buynow','BuyNowController@storebuynow');
 
-
+    Route::get('/profile', 'MarketController@viewprofile')->name('profile');
+    Route::get('/edit_profile/{id}','MarketController@editfotoprofile');
+    Route::post('/profile/uploadfoto/{id}','MarketController@uploadfotoprofile');
+    Route::get('/transaksi', 'MarketController@tampiltransaksi');
+    Route::post('/review','MarketController@tambahreview');
 
 });
 

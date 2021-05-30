@@ -56,7 +56,7 @@
 
       @else
       <span class="btn-panel col-md-4" >
-          <form action="/kategori">
+          <form action="/produk">
               <button type="submit" class="sdw-wrap btn-primary">
                   <a  class="sdw-hover btn btn btn-material btn-view" style="color: white"><i class="icon icofont icofont-check-circled"></i><span class="body" >Kembali ke halaman utama</span></a>
 

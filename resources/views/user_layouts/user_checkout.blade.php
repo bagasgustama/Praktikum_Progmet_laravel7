@@ -10,14 +10,14 @@
   </div>
 </div>
 <!-- //breadcrumbs -->
-<!-- checkout -->
+
+
 <div class="checkout">
   <div class="container">
-    {{-- <h3 class="animated wow slideInLeft" data-wow-delay=".5s">Your shopping cart contains: <span>{{$data_cart->count()}} Product</span></h3> --}}
     <h1 class="header text-uppercase">
       Recepient Address 
 
-  </h1>
+    </h1>
     <div class="checkout-right animated wow slideInUp" data-wow-delay=".5s">
       <form action="/checkout-produk" method="POST">
         @csrf
@@ -55,37 +55,29 @@
         <div class="mb-3 form-check">
           <label class="form-check-label" for="exampleCheck1" style="padding: 0px; margin-top :20px;">Layanan</label>
         </div>
-        {{-- <select class=" form-control" style="padding: 0px " name="shipping_cost" id="layanan">
-            <option value="" selected disabled>Pilih Layanan</option>
-        </select> --}}
         <select class=" form-control" style="padding: 0px " name="shipping_cost" id="layanan" required>
           <option value="" selected disabled>Pilih Layanan</option>
-      </select>
+        </select>
         <button type="submit" class="btn btn-primary " style="margin-top :20px;">Submit</button>
     
-      
     </div>
+
     <div class="checkout-left">	
       <div class="checkout-left-basket animated wow slideInLeft" data-wow-delay=".5s">
         <h4>List Order</h4>
         <ul class="list-2">
           
-      </ul>
+        </ul>
         <ul>
           <li>Total <i>-</i> <span>Rp.{{ number_format($total) }} </span></li>
           <li>Total Weight <i>-</i> <span id="berat_total" data-berat="{{ $berat_total }}" class="sub">
             {{ number_format($berat_total) }} gram
         </span>
-          {{-- <li>Product3 <i>-</i> <span>$299.00 </span></li> --}}
-          {{-- <li>Total Service Charges <i>-</i> <span>$15.00</span></li>
-          <li>Total <i>-</i> <span>$854.00</span></li> --}}
         </ul>
       </div>
-      {{-- <div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s">
-        <a href="single.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
-      </div> --}}
       <div class="clearfix"> </div>
     </div>
+
     @foreach ($data_cart as $cart)
 
     <tr>
@@ -93,14 +85,9 @@
             $image = $cart->produk->getfirstimage();
         @endphp
         <th scope="row">
-          {{-- ******************************* --}}
-            {{-- <img style="height:50px;" src="{{ $image->image }}" alt="" class="img-fluid z-depth-0"> --}}
         </th>
 
         <td>
-            {{-- <h5 class="mt-3">
-                <strong>{{ $cart->produk->product_name }}</strong>
-            </h5> --}}
         </td>
 
         @forelse ($cart->produk->diskon as $diskonbarang)
@@ -110,19 +97,12 @@
         @endphp
 
         @if (date('Y-m-d')>= $diskonbarang->start && date('Y-m-d')< $diskonbarang->end)
-            {{-- <td>Rp
-                <span class="float-lef grey-text price0">
-                    {{ number_format(($cart->produk->price-$nilaidiskon)*$cart->qty) }}
-                </span> --}}
                 <input type="hidden" name="discount[]" value="{{ $diskonbarang->percentage }}">
                 <input type="hidden" name="selling_price[]" value="{{ ($cart->produk->price-$nilaidiskon)*$cart->qty ?? '0' }}">
             </td>
             
         @else
             <td>
-                {{-- <span class="float-lef grey-text price0">
-                    {{ number_format(($cart->produk->price)*$cart->qty) }}
-                </span> --}}
                 <input type="hidden" name="discount[]" value="0">
                 <input type="hidden" name="selling_price[]" value="{{ ($cart->produk->price)*$cart->qty ?? '0' }}">
             </td>
@@ -131,9 +111,6 @@
 
         @empty
         <td>
-            {{-- <span class="float-lef grey-text price0">
-                {{ number_format(($cart->produk->price)*$cart->qty) }}
-            </span> --}}
             <input type="hidden" name="discount[]" value="0">
             <input type="hidden" name="selling_price[]" value="{{ ($cart->produk->price)*$cart->qty ?? '0' }}">
         </td>
@@ -141,18 +118,13 @@
         @endforelse
 
         <td class="text-center text-md-left">
-            {{-- <p class="text-danger" style="display:none" id="notif0"></p>
-            <span class="qty0">{{ number_format($cart->qty) }}</span> --}}
         </td>    
     </tr>
 
     @endforeach
   </form>
   </div>
-{{-- **** --}}
-
 </div>
-<!-- //checkout -->
 
 @endsection
 

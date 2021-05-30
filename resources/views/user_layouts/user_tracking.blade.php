@@ -1,6 +1,6 @@
 @extends('user_layouts.user_master')
 @section('content')
-<!-- <!-- breadcrumbs -->
+<!-- breadcrumbs -->
 <div class="breadcrumbs">
   <div class="container">
     <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
@@ -17,23 +17,12 @@
     @if ($data_transaksi->status == 'success')
     <h1 style="margin-top: 100px; margin-bottom:30px; font-weight:bold;">Pesanan Sudah Berhasil</h1>
     <h2 style="margin-bottom:100px;">Rating dan Ulasan</h2>
-    {{-- <div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s" style="margin-bottom: 100px;">
-      <a href="/produk"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
-    </div> --}}
-
-    {{-- @if ($data_transaksi->status == 'success') --}}
       <!-- Form -->
       <div class="add-comment row">
-
-          <!-- Header -->
-          {{-- <h3 class="header">Add new product feedback</h3> --}}
-
           <form class="form-horizontal" method="POST" action="/review">
               @csrf
               <div class="form-group text-center">
-                  {{-- <label for="inputText" class="col-sm-3 control-label">Enter your message</label> --}}
                   <div class="col-sm-10">
-                      {{-- <label for="exampleFormControlSelect1">Rating</label> --}}
                       <select name="product_id" class="form-control" id="exampleFormControlSelect1" style="padding: 0px ">
                           <option selected disabled>Pilih Produk</option>
                           @foreach ($data_transaksi->produk as $produk)
@@ -43,7 +32,6 @@
                       </select>
                   </div>
                   <div class="col-sm-10" style="margin-top: 20px">
-                      {{-- <label for="exampleFormControlSelect1">Rating</label> --}}
                       <select name="rate" class="form-control" id="exampleFormControlSelect1" style="padding: 0px ">
                           <option selected disabled>Rating</option>
                           <option value="1">1</option>
@@ -71,9 +59,6 @@
       
   @endif
 
-
-    {{-- @endif --}}
-  
   </div>
 </div>
 @endsection

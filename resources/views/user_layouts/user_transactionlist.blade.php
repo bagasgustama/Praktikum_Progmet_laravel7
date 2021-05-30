@@ -39,12 +39,9 @@
               </tr>
 
           </thead>
-          <!-- Table head -->
-
-          <!-- Table body -->
+          
           <tbody>
-
-              <!-- First row -->
+              
               @foreach ($data_transaksi as $transaksi)
 
               <tr>
@@ -108,7 +105,7 @@
 
               @endforeach
           </tbody>
-          <!-- Table body -->
+          
       </table>
     <div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s" style="margin-bottom: 100px;">
       <a href="/produk"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>

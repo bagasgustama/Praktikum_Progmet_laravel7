@@ -4,7 +4,7 @@
       <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
         <ul>
           <ul class="navbar-nav ml-auto">
-            <!-- Authentication Links -->
+            
             @guest
                 <li class="nav-item">
                   <i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a class="nav-link " href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -47,16 +47,6 @@
 
                             </div>
                         @else
-                        {{-- <div class="cart box_1">
-                          <a href="/cart">
-                            <h3> <div class="total">
-                              <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-                              <img src="images/bag.png" alt="" />
-                            </h3>
-                          </a>
-                          <p><a href="javascript:;" class="simpleCart_empty">Cart</a></p>
-                          <div class="clearfix"> </div>
-                        </div> --}}
                           <div style="margin-left: 20px" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                               <a class="dropdown-item" href="{{ route('user.logout') }}"
                                   onclick="event.preventDefault();
@@ -71,12 +61,8 @@
                           </div>
                         @endif
                     </li>
-                    @endguest
-        </ul>
-          {{-- <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">@example.com</a></li>
-          <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 <span>567</span> 892</li> --}}
-          {{-- <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="/login">Login</a></li>
-          <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href="/register">Register</a></li> --}}
+            @endguest
+          </ul>
         </ul>
       </div>
       <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">

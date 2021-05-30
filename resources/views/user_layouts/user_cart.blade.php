@@ -27,7 +27,7 @@
           <thead>
             <tr>
               <th>Product</th>
-              <th>Quality</th>
+              <th>Quantity</th>
               <th>Product Name</th>
               <th>Price/Qty</th>
               <th>Total Price</th>
@@ -145,15 +145,15 @@
                 <td class="invert">
                   
                   <div class="rem">
-                    <div class="close1"> 
+                    {{-- <div class="close1">  --}}
                       <form action="/produk/cart/{{ $cart->id }}/deletecart" method="post">
                         @csrf
                         @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Anda yakin ingin hapus data ini?')">X
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Anda yakin ingin hapus data ini?')">Remove
                                 <i class="icofont icofont-close-line"></i>
                             </button>
                       </form>
-                    </div>
+                    {{-- </div> --}}
                   </div>
                 </td>
               </tr>
@@ -277,6 +277,7 @@
             success: function(response) {
                 if(response.status == 0){
                     alert('Kuantitas barang tidak boleh 0');
+                    
                 }else{
                     $('#qty'+id).val(response.qty);
                     $('#hargadiskon'+id).html(response.nilaidiskon);

@@ -67,7 +67,11 @@
                               </span>
                             </div>
 
-                            <p><i>Rp.{{ number_format($produk["price"]) }}</i><span class="">{{$diskonbarang["percentage"] }}%</span><span class="item_price" style="font-weight: bold">Rp.{{ number_format($produk["price"]-$nilaidiskon) }}</span><a class="item_add" style="backgroud-color:red; color:red;" href="/produk/{{ $produk["id"] }}/view">View Product</a></p>
+                            <p><i>Rp.{{ number_format($produk["price"]) }}</i>
+                              
+                              <span style="font-size: 30px; font-weight: bold; color: red; ">{{$diskonbarang["percentage"] }}%</span></p>
+                              <p><span class="item_price" style="font-weight: bold">Rp.{{ number_format($produk["price"]-$nilaidiskon) }}</span>
+                              <a class="item_add" style="backgroud-color:red; color:red;" href="/produk/{{ $produk["id"] }}/view">View Product</a></p>
 
                         @else
                         <div class="rating1">
@@ -94,7 +98,10 @@
                             @endif
                           </span>
                         </div>
-                            <p><span class="item_price" style="font-weight: bold">Rp.{{ number_format($produk["price"]) }}</span><a class="item_add" style="backgroud-color:red; color:red;" href="/produk/{{ $produk["id"] }}/view">View Product</a></p>
+                        <div style="margin-top: 40px">
+                        </div>
+                            <p><span class="item_price" style="font-weight: bold">Rp.{{ number_format($produk["price"]) }}</span>
+                              <a class="item_add" style="backgroud-color:red; color:red;" href="/produk/{{ $produk["id"] }}/view">View Product</a></p>
 
                         @endif
 
@@ -124,7 +131,9 @@
                         @endif
                       </span>
                     </div>
-                        <p><span class="item_price" style="font-weight: bold">Rp.{{ number_format($produk["price"]) }}</span><a class="item_add" style="backgroud-color:red; color:red;" href="/produk/{{ $produk["id"] }}/view">View Product</a></p>
+                    <div style="margin-top: 40px">
+                    </div>
+                        <p style="margin-top: 30px"><span class="item_price" style="font-weight: bold; ">Rp.{{ number_format($produk["price"]) }}</span><a class="item_add" style="backgroud-color:red; color:red;" href="/produk/{{ $produk["id"] }}/view">View Product</a></p>
 
                     @endforelse
 

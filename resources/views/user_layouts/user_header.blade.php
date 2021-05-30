@@ -66,12 +66,12 @@
         </ul>
       </div>
       <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
-        <ul class="social-icons">
+        {{-- <ul class="social-icons">
           <li><a href="#" class="facebook"></a></li>
           <li><a href="#" class="twitter"></a></li>
           <li><a href="#" class="g"></a></li>
           <li><a href="#" class="instagram"></a></li>
-        </ul>
+        </ul> --}}
       </div>
       <div class="clearfix"> </div>
     </div>
@@ -106,7 +106,7 @@
         </nav>
       </div>
       <div class="logo-nav-right">
-        <div class="search-box">
+        {{-- <div class="search-box">
           <div id="sb-search" class="sb-search">
             <form>
               <input class="sb-search-input" placeholder="Enter your search term..." type="search" id="search">
@@ -114,13 +114,13 @@
               <span class="sb-icon-search"> </span>
             </form>
           </div>
-        </div>
+        </div> --}}
           <!-- search-scripts -->
-          <script src="js/classie.js"></script>
+          {{-- <script src="js/classie.js"></script>
           <script src="js/uisearch.js"></script>
             <script>
               new UISearch( document.getElementById( 'sb-search' ) );
-            </script>
+            </script> --}}
           <!-- //search-scripts -->
       </div>
       <div class="header-right">

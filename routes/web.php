@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CourierController;
+use App\Http\Controllers\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +49,8 @@ Route::prefix('admin')->group(function () {
 });
 Auth::routes();
 
-
+Route::get('/addpic', 'HomeController@pic');
+Route::post('/addpic/upload', 'HomeController@uploadpic');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/produk','MarketController@viewproduct');
 Route::get('/produk/{produk:id}/view','MarketController@viewdetailproduct');
@@ -84,3 +90,23 @@ Route::group(['middleware'=> ['auth:admin']],function () {
 
 
 });
+Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home');
+	Route::get('/daftar/diskon', [ProductsController::class, 'listdiskon'])->name('listdiskon');
+	Route::post('/save/diskon', [ProductsController::class, 'savediskon'])->name('savediskon');
+	Route::get('/daftar/review', [ProductsController::class, 'listreview'])->name('listreview');
+	Route::get('/hapus/review', [ProductsController::class, 'hapusreview'])->name('admin.hapus.review');
+	Route::post('/post/foto/product', [ProductsController::class, 'saveproductimage'])->name('post.fotoproduk');
+	Route::get('/list/products', [ProductsController::class , 'index'])->name('list.products');
+	Route::post('/save/product', [ProductsController::class, 'saveproduct'])->name('save.product');
+	Route::get('/ubah/product/page', [ProductsController::class, 'ubahproductpage'])->name('ubah.product.page');
+	Route::post('/ubah/product', [ProductsController::class, 'ubahproduct'])->name('ubah.product');
+	Route::get('/hapus/product', [ProductsController::class, 'hapusproduct'])->name('hapus.product');
+	Route::get('/list/courier', [CourierController::class , 'index'])->name('list.courier');
+	Route::post('/save/courier', [CourierController::class, 'savecou'])->name('save.courier');
+	Route::post('/ubah/courier', [CourierController::class, 'ubahcou'])->name('ubah.courier');
+	Route::get('/hapus/courier', [CourierController::class, 'hapuscou'])->name('hapus.courier');
+	Route::get('/list/category', [CategoryController::class , 'index'])->name('list.category');
+	Route::post('/save/category', [CategoryController::class, 'savecategory'])->name('save.category');
+	Route::post('/ubah/category', [CategoryController::class, 'ubahcategory'])->name('ubah.category');
+	Route::get('/hapus/category', [CategoryController::class, 'hapuscategory'])->name('hapus.category');
+	Route::get('/admin/logout', [AuthController::class, 'logout'])->name('admin.logout');

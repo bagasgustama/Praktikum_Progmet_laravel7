@@ -2,6 +2,13 @@
 @section('content')
 
 <style>.new-collections-grid1:nth-child(2){margin-top: 0px;}</style>
+<style>.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+</style>
 
 <!-- breadcrumbs -->
 <div class="breadcrumbs">
@@ -28,7 +35,34 @@
                     <div class="new-collections-grid1 col-md-4 animated wow slideInUp" data-wow-delay=".5s">
                       <div class="new-collections-grid1-image">
                           {{-- <a href="/produk/{{ $produk["id"] }}/view" class="product-image"><img src="{{ $produk->productimage }}" alt=" " class="img-responsive"></a> --}}
-                          <a href="/produk/{{ $produk["id"] }}/view" class="product-image"><img src="images/19.jpg" alt=" " class="img-responsive"></a>
+                          <a href="/produk/{{ $produk["id"] }}/view" class="product-image">
+
+                            @php
+                                $count = 0;
+                            @endphp
+
+                            @foreach ($produk->productimage as $image)
+                            <!-- Image -->
+                            @php
+                              $count++;
+                            @endphp
+                            @if ($count==1)
+                                <div style="height: 250px" >
+                                  {{-- <img src="{{asset('images/11.jpg')}}" alt=" "  class="img-responsive center"></a> --}}
+                                  <img src="{{ $image->image }}" alt=" "  class="img-responsive center"></a>
+                                </div>
+
+                                {{-- <div class="image" style="height: 450px">
+                                    <img class="main" src="{{ $image->image }}" alt="">
+                                </div> --}}
+                                
+                            @endif
+                                
+                            @endforeach
+                            {{-- <div style="height: 250px" >
+                            <img src="images/11.jpg" alt=" "  class="img-responsive center"></a>
+                            </div> --}}
+                            
                           <div class="new-collections-grid1-image-pos products-right-grids-pos">
                               {{-- <a href="/produk/{{ $produk["id"] }}/view">View</a> --}}
                           </div>

@@ -22,7 +22,7 @@
                         </a>
 
                         @if(\Illuminate\Support\Facades\Auth::guard('admin')->check())
-                        <div class="cart box_1">
+                        {{-- <div class="cart box_1">
                           <a href="/cart">
                             <h3> <div class="total">
                               <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
@@ -31,7 +31,7 @@
                           </a>
                           <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
                           <div class="clearfix"> </div>
-                        </div>
+                        </div> --}}
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('admin.logout') }}"
                                    onclick="event.preventDefault();

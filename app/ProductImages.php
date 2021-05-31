@@ -14,7 +14,7 @@ class ProductImages extends Model
     }
 
     public function getimageattribute(){
-        return $this->image_name? asset('storage/img/gambarproduk/'.$this->image_name):asset('img-001.jpg');
+        return $this->image_name? asset('storage/app/images/produk/'.$this->image_name):asset('public/images/19.jpg');
     }
 }
 

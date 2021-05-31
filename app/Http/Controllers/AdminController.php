@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Discount;
+use App\Models\Product;
+use App\Models\Product_categorie;
+use App\Models\Product_category_detail;
+use App\Models\Product_image;
+use App\Models\Product_review;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -23,6 +30,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin');
+        $data['category'] = Product_categorie::all();
+    	return view('admin.homepage', $data);
+        // return view('admin');
     }
 }

@@ -25,12 +25,35 @@
                 
                     <div class="new-collections-grid1 col-md-4 animated wow slideInUp" data-wow-delay=".5s">
                       <div class="new-collections-grid1-image">
-                          <a href="/produk/{{ $produk->id }}/view" class="product-image"><img src="{{asset('images/19.jpg')}}" alt=" " class="img-responsive"></a>
+                          <a href="/produk/{{ $produk->id }}/view" class="product-image">
+                            @php
+                                $count = 0;
+                            @endphp
+
+                            @foreach ($produk->productimage as $image)
+                            <!-- Image -->
+                            @php
+                              $count++;
+                            @endphp
+                            @if ($count==1)
+                                <div style="height: 250px" >
+                                  {{-- <img src="{{asset('images/11.jpg')}}" alt=" "  class="img-responsive center"></a> --}}
+                                  <img src="{{ $image["image"] }}" alt=" "  class="img-responsive center"></a>
+                                </div>
+
+                                {{-- <div class="image" style="height: 450px">
+                                    <img class="main" src="{{ $image->image }}" alt="">
+                                </div> --}}
+                                
+                            @endif
+                                
+                            @endforeach
+                            {{-- <img src="{{asset('images/19.jpg')}}" alt=" " class="img-responsive"></a> --}}
                           <div class="new-collections-grid1-image-pos products-right-grids-pos">
                           </div>
                           
                       </div>
-                      <h4><a href="/produk/{{ $produk->id }}/view">{{ $produk->product_name }}</a></h4>
+                      <h4 style="margin-top: 50px"><a href="/produk/{{ $produk->id }}/view">{{ $produk->product_name }}</a></h4>
                       <p>{{ Str::limit($produk->description, 30, $end='...') }}</p>
                       <div class="simpleCart_shelfItem products-right-grid1-add-cart">
                         @forelse ($produk->diskon as $diskonbarang)

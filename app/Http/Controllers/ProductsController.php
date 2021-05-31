@@ -204,7 +204,7 @@ function ubahproduct(Request $req){
 function hapusproduct(){
 	Product::findOrFail($_GET['id']);
 	try {
-		Discount::where('product_id', $_GET['id'])->delete();
+		Discount::where('id_product', $_GET['id'])->delete();
 		Product_image::where('product_id', $_GET['id'])->delete();
 		Product_category_detail::where('product_id', $_GET['id'])->delete();
 		Product::where('id', $_GET['id'])->delete();

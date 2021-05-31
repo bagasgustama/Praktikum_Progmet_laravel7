@@ -16,14 +16,45 @@
 		
 		<div class="col-md-12 single-right">
 			<div class="col-md-5 single-right-left animated wow slideInUp" data-wow-delay=".5s">
-				<div class="col-sm-4 col-md-5 fix-height">
-					<div class="new-collections-grid1-image">
+				<div class="flexslider">
+					<ul class="slides">
+						@foreach ($produk->productimage as $produk_detail)
+						<li data-thumb="{{ $produk_detail->image }}">
+							<div class="thumb-image"> <img src="{{ $produk_detail->image }}" data-imagezoom="true" class="img-responsive"> </div>
+						</li>
+						@endforeach
+
+						{{-- <li data-thumb="images/si1.jpg">
+							 <div class="thumb-image"> <img src="images/si1.jpg" data-imagezoom="true" class="img-responsive"> </div>
+						</li>
+						<li data-thumb="images/si2.jpg">
+							 <div class="thumb-image"> <img src="images/si2.jpg" data-imagezoom="true" class="img-responsive"> </div>
+						</li>  --}}
+					</ul>
+				</div>
+				<!-- flixslider -->
+					<script defer src="{{asset('js/jquery.flexslider.js')}}"></script>
+					<link rel="stylesheet" href="{{asset('css/flexslider.css')}}" type="text/css" media="screen" />
+					<script>
+					// Can also be used with $(document).ready()
+					$(document).ready(function() {
+						$('.flexslider').flexslider({
+						animation: "slide",
+						controlNav: "thumbnails"
+						});
+					});
+					</script>
+				<!-- flixslider -->
+				
+				
+				{{-- <div class="col-sm-4 col-md-5 fix-height">
+						<div class="owl-carousel image image-nav">
 						@foreach ($produk->productimage as $produk_detail)
 						<a class="product-image"><img src="{{ $produk_detail->image }}" alt=" " class="img-responsive"></a>
 						{{-- <a class="product-image"><img src="{{asset('images/19.jpg')}}" alt=" " class="img-responsive"></a> --}}
-						@endforeach
-					</div>
-			</div>
+						{{-- @endforeach --}}
+					{{-- </div> --}}
+			{{-- </div> --}}
 			</div>
 			<div class="col-md-7 single-right-left simpleCart_shelfItem animated wow slideInRight" data-wow-delay=".5s">
 				<h3>{{ $produk->product_name}}</h3>
@@ -186,4 +217,6 @@
 	</div>
 </div>
 <!-- //single -->
+<script src="{{asset('js/imagezoom.js')}}"></script>
+
 @endsection

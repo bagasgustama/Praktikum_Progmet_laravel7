@@ -39,8 +39,10 @@
 
             @foreach ($data_cart as $cart)
               <tr class="rem1">
-
-                <td class="invert-image"><a href="single.html"><img src="images/22.jpg" alt=" " class="img-responsive" /></a>
+                @php
+                    $image = $cart->produk->getfirstimage();
+                @endphp
+                <td class="invert-image" ><a href="/produk/{{ $cart->produk["id"] }}/view"><img src="{{ $image->image }}" alt=" " class="img-responsive" style="width: 150px"/></a>
                 </td>
 
                 <td class="invert">

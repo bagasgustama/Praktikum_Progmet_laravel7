@@ -52,7 +52,30 @@
                       
                                             </div>
                                             <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
-                                                <a href="/produk/{{ $produk->id }}/view" class="product-image"><img src="images/19.jpg" alt=" " class="img-responsive"></a>
+                                                <a href="/produk/{{ $produk->id }}/view" class="product-image">
+                                                    @php
+                                                        $count = 0;
+                                                    @endphp
+
+                                                    @foreach ($produk->productimage as $image)
+                                                    <!-- Image -->
+                                                    @php
+                                                    $count++;
+                                                    @endphp
+                                                    @if ($count==1)
+                                                        <div style="height: 250px" >
+                                                        {{-- <img src="{{asset('images/11.jpg')}}" alt=" "  class="img-responsive center"></a> --}}
+                                                        <img src="{{ $image["image"] }}" alt=" "  class="img-responsive center"></a>
+                                                        </div>
+
+                                                        {{-- <div class="image" style="height: 450px">
+                                                            <img class="main" src="{{ $image->image }}" alt="">
+                                                        </div> --}}
+                                                        
+                                                    @endif
+                                                        
+                                                    @endforeach
+                                                    {{-- <img src="images/19.jpg" alt=" " class="img-responsive"></a> --}}
                                                 <div class="new-collections-grid1-image-pos products-right-grids-pos">
                                                     {{-- <a href="/produk/{{ $produk["id"] }}/view">View</a> --}}
                                                 </div>

@@ -87,6 +87,8 @@
                         <div class="form-group">
                             <label>Courier</label>
                             <input type="text" name="courier" class="form-control" placeholder="Masukkan nama kurir" required>
+                            <label>Code</label>
+                            <input type="text" name="code" class="form-control" placeholder="Masukkan nama kurir" required>
                         </div>
                     </div>
                     <div class="modal-footer">

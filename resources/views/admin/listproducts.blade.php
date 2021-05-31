@@ -54,7 +54,7 @@
                             <td>{{$p->product_rate}}</td>
                             <td>{{$p->stock}}</td>
                             <td>{{$p->weight}}</td>
-                            <td><a href="./../storage/images/produk/{{$p->image_name}}" target="_blank" style="text-decoration: none; color: #111">{{$p->image_name}}</a></td>
+                            <td><a href="/storage/app/img/gambarproduk/{{$p->image_name}}" target="_blank" style="text-decoration: none; color: #111">{{$p->image_name}}</a></td>
                             <td>
                                 <a class="btn btn-primary mr-1" href="{{ route('ubah.product.page', ['id' => $p->id ]) }}"><i class="fas fa-edit"></i> Ubah</button>
                                 <a onclick="return confirm('Yakin melanjutkan hapus produk {{$p->product_name}}')" href="{{ route('hapus.product', ['id' => $p->id]) }}" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</a>

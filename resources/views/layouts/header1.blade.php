@@ -213,7 +213,7 @@
                         </div>
                         <div class="form-group">
                             <label>Rating produk</label>
-                            <input type="number" min="1" max="5" name="rating" class="form-control" placeholder="Masukkan rating produk" required>
+                            <input type="number" min="1" max="5" name="rating" class="form-control" placeholder="Masukkan rating produk">
                         </div>
                         <div class="form-group">
                             <label>Stok</label>
@@ -232,6 +232,63 @@
         </div>
     </div>
     <!--End Modal Product -->
+
+
+    <!--Modal Transaction -->
+    <div class="modal fade" id="tambahtransaktion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Form tambah produk</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <form method="post" action="{{ route('save.product') }}">
+                  @csrf
+                  <div class="modal-body">
+                      <div class="form-group">
+                          <label>Kategori</label>
+                          <select class="form-control" name="kategori" required>
+                              <option value="">--Select Here--</option>
+                              @foreach($category as $c)
+                              <option value="{{$c->id}}">{{$c->category_name}}</option>
+                              @endforeach
+                          </select>
+                      </div>
+                      <div class="form-group">
+                          <label>Produk</label>
+                          <input type="text" name="product_name" class="form-control" placeholder="Masukkan nama produk" required>
+                      </div>
+                      <div class="form-group">
+                          <label>Harga</label>
+                          <input type="number" min="0" name="harga" class="form-control" placeholder="Masukkan harga produk" required>
+                      </div>
+                      <div class="form-group">
+                          <label>Deskripsi</label>
+                          <textarea name="deskripsi" class="form-control" placeholder="Masukkan deskripsi produk" required></textarea>
+                      </div>
+                      <div class="form-group">
+                          <label>Rating produk</label>
+                          <input type="number" min="1" max="5" name="rating" class="form-control" placeholder="Masukkan rating produk">
+                      </div>
+                      <div class="form-group">
+                          <label>Stok</label>
+                          <input type="number" min="0" name="stok" class="form-control" placeholder="Masukkan stok produk" required>
+                      </div>
+                      <div class="form-group">
+                          <label>Berat</label>
+                          <input type="number" min="0" name="berat" class="form-control" placeholder="Masukkan berat produk" required>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary">Simpan</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+  <!--End Modal Transaction -->
 
     <div id="app">
         <div class="main-wrapper">
@@ -278,6 +335,35 @@
                             <li><a class="nav-link" href="{{ route('list.category') }}">Master Category</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item dropdown">
+                      <a href="#" class="nav-link has-dropdown"><i class="fas fa-list"></i><span>Data Transaksi</span></a>
+                      <ul class="dropdown-menu">
+                          <li><a class="nav-link" href="{{ route('list.transaction') }}">Transaksi</a></li>
+                      </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a href="#" class="nav-link has-dropdown"><i class="fas fa-list"></i><span>Notif</span></a>
+                      <ul class="dropdown-menu">
+                      @foreach ($notif as $item)
+                      @php
+                          $data = json_decode($item->data);
+                      @endphp
+                            <li><a class="nav-link" href="" style="height: 50px">{{ $data->nama }} {{ $data->massage}}</a>
+                              <a class="font-weight-bold">{{ date("d F Y", strtotime($item->created_at)) }}</a></li>
+                          
+                          
+                          {{-- <div style="margin-bottom: 10px">
+                              <div class="small text-gray-500">{{ $data->nama }} {{ $data->massage}}</div>
+                              <span class="font-weight-bold">{{ date("d F Y", strtotime($item->created_at)) }}</span>
+                          </div> --}}
+                      @endforeach
+
+                      {{-- @if ($notif->count() != 0)
+                      <a class="dropdown-item text-center small text-gray-500" href="/admin/notifikasi">Show All Notification</a>
+                          
+                      @endif --}}
+                      </ul>
+                  </li>
                 </ul>
             </aside>
         </div>

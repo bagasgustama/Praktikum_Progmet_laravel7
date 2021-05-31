@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourierController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\TransactionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,8 +90,7 @@ Route::group(['middleware'=> ['auth']],function (){
 Route::group(['middleware'=> ['auth:admin']],function () {
 
 
-});
-Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home');
+    Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home');
 	Route::get('/daftar/diskon', [ProductsController::class, 'listdiskon'])->name('listdiskon');
 	Route::post('/save/diskon', [ProductsController::class, 'savediskon'])->name('savediskon');
 	Route::get('/daftar/review', [ProductsController::class, 'listreview'])->name('listreview');
@@ -109,4 +109,8 @@ Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home')
 	Route::post('/save/category', [CategoryController::class, 'savecategory'])->name('save.category');
 	Route::post('/ubah/category', [CategoryController::class, 'ubahcategory'])->name('ubah.category');
 	Route::get('/hapus/category', [CategoryController::class, 'hapuscategory'])->name('hapus.category');
-	Route::get('/admin/logout', [AuthController::class, 'logout'])->name('admin.logout');
+    Route::get('/admin/logout', [AuthController::class, 'logout'])->name('admin.logout');
+	Route::get('/list/transaction', [TransactionsController::class , 'index'])->name('list.transaction');
+	Route::post('/save/transaction', [TransactionsController::class, 'savetransaction'])->name('save.transaction');
+    
+});

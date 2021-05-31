@@ -90,7 +90,7 @@ class CheckoutController extends Controller
 
         }
 
-        $admin = Admin::find(5);
+        $admin = Admin::find(1);
         $data = [
             'nama'=>Auth::user()->name,
             'massage'=>'Telah melakukan transaksi',
@@ -99,7 +99,8 @@ class CheckoutController extends Controller
 
         $data_encode = json_encode($data);
 //********************************************* */
-        // $admin->createNotif($data_encode);
+        // dd($data);
+        $admin->createNotif($data_encode);
 
         $user = User::find($id_transaksi->user_id);
         $data = [
@@ -234,6 +235,7 @@ class CheckoutController extends Controller
 
         $data_encode = json_encode($data);
 //****************** */
+        $admin->createNotif($data_encode);
         return redirect('/produk');
     }
 

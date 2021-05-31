@@ -124,9 +124,7 @@
           <!-- //search-scripts -->
       </div>
       <div class="header-right">
-
-        @if(\Illuminate\Support\Facades\Auth::guard('web')->check())
-        <div class="cart box_1">
+        <div class="cart box_1" style="margin-left: 20px">
           <a href="/cart">
             <h3> <div class="total">
               {{-- <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div> --}}
@@ -135,6 +133,73 @@
           </a>
           <p><a href="javascript:;" class="simpleCart_empty">Cart</a></p>
           <div class="clearfix"> </div>
+        </div>
+        @if(\Illuminate\Support\Facades\Auth::guard('web')->check())
+        <div class="cart box_1" style="margin-left: 30px">
+
+          <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                @if ($notif->count() != 0)
+                    <span class="badge badge-danger badge-counter">
+                                
+                        <!-- Counter - Alerts -->
+                        @if ($notif->count() > 5)
+                            {{ $notif->count() }}+
+                            
+                        @else
+                            {{ $notif->count() }}
+                            
+                        @endif
+                    
+                        
+                    </span>
+                @endif
+                <p><a href="javascript:;" class="simpleCart_empty">Notif</a></p>
+            </a>
+            <!-- Dropdown - Alerts -->
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                
+
+                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-bell fa-fw"></i>
+
+                @foreach ($notif as $item)
+                @php
+                    $data = json_decode($item->data);
+                @endphp
+                    
+                    <a class="dropdown-item d-flex align-items-center" onclick="" href="">
+                      <a class="dropdown-item d-flex align-items-center" >
+
+                    <div class="mr-3">
+                        <div class="icon-circle bg-primary">
+                            <i class="fas fa-file-alt text-white"></i>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 10px">
+                        <div class="small text-gray-500">{{ $data->nama }} {{ $data->massage}}</div>
+                        <span class="font-weight-bold">{{ date("d F Y", strtotime($item->created_at)) }}</span>
+                    </div>
+                </a>
+                @endforeach
+{{-- 
+                @if ($notif->count() != 0)
+                <a class="dropdown-item text-center small text-gray-500" href="/admin/notifikasi">Show All Notification</a>
+                    
+                @endif --}}
+            </div>
+        </li>
+
+          {{-- <a href="/cart">
+            <h3> <div class="total">
+              <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+              <img src="{{asset('images/bag.png')}}" alt="" />
+            </h3>
+          </a>
+          <p><a href="javascript:;" class="simpleCart_empty">Notif</a></p>
+          <div class="clearfix"> </div> --}}
         </div>
         @endif
         {{-- <div class="cart box_1">

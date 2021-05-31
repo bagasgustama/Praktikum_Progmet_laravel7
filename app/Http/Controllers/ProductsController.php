@@ -57,7 +57,7 @@ class ProductsController extends Controller
 
 		try {
 			Discount::create([
-				'product_id' => $req->idproduk,
+				'id_product' => $req->idproduk,
 				'percentage' => $req->persen,
 				'start' => $req->start,
 				'end' => $req->end
@@ -108,7 +108,7 @@ function saveproduct(Request $req){
 		'product_name' => 'required|unique:products',
 		'harga' => 'required',
 		'deskripsi' => 'required',
-		'rating' => 'required',
+		// 'rating' => 'required',
 		'stok' => 'required',
 		'berat' => 'required'
 	],[
@@ -117,7 +117,7 @@ function saveproduct(Request $req){
 		'product_name.unique' => "Nama produk sudah digunakan",
 		'harga.required' => "Harga produk harus diisi",
 		'deskripsi.required' => "Deskripsi produk harus diisi",
-		'rating.required' => "Rating produk harus diisi",
+		// 'rating.required' => "Rating produk harus diisi",
 		'stok.required' => "Stok produk harus diisi",
 		'berat.required' => "Berat produk harus diisi",
 	]);
@@ -164,7 +164,7 @@ function ubahproduct(Request $req){
 		'product_name' => 'required',
 		'harga' => 'required',
 		'deskripsi' => 'required',
-		'rating' => 'required',
+		// 'rating' => 'required',
 		'stok' => 'required',
 		'berat' => 'required'
 	],[
@@ -172,7 +172,7 @@ function ubahproduct(Request $req){
 		'product_name.required' => "Nama produk harus diisi",
 		'harga.required' => "Harga produk harus diisi",
 		'deskripsi.required' => "Deskripsi produk harus diisi",
-		'rating.required' => "Rating produk harus diisi",
+		// 'rating.required' => "Rating produk harus diisi",
 		'stok.required' => "Stok produk harus diisi",
 		'berat.required' => "Berat produk harus diisi",
 	]);

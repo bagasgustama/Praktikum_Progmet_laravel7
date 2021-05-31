@@ -13,8 +13,8 @@
     <div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s" style="margin-bottom: 100px;">
       <a href="/produk"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
     </div>
-    @endif
-    @if ($data_transaksi->status == 'success')
+    
+    @elseif ($data_transaksi->status == 'success')
     <h1 style="margin-top: 100px; margin-bottom:30px; font-weight:bold;">Pesanan Sudah Berhasil</h1>
     <h2 style="margin-bottom:100px;">Rating dan Ulasan</h2>
       <!-- Form -->
@@ -56,7 +56,12 @@
             <a href="/produk"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
           </div>
       </div>
-      
+    @else
+    <h1 style="margin-top: 100px; margin-bottom:30px; font-weight:bold;">Validasi Pembayaran</h1>
+    <h2 style="margin-bottom:100px;">Pesanan Sedang Diproses</h2>
+    <div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s" style="margin-bottom: 100px;">
+      <a href="/produk"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
+    </div>
   @endif
 
   </div>

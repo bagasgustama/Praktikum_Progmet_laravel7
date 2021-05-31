@@ -5,7 +5,7 @@
 	<div class="container">
 		<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
 			<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-			<li class="active">Single Page</li>
+			<li class="active">Product View Page</li>
 		</ol>
 	</div>
 </div>
@@ -18,8 +18,10 @@
 			<div class="col-md-5 single-right-left animated wow slideInUp" data-wow-delay=".5s">
 				<div class="col-sm-4 col-md-5 fix-height">
 					<div class="new-collections-grid1-image">
-						<a class="product-image"><img src="{{asset('images/19.jpg')}}" alt=" " class="img-responsive"></a>
-						 
+						@foreach ($produk->productimage as $produk_detail)
+						<a class="product-image"><img src="{{ $produk_detail->image }}" alt=" " class="img-responsive"></a>
+						{{-- <a class="product-image"><img src="{{asset('images/19.jpg')}}" alt=" " class="img-responsive"></a> --}}
+						@endforeach
 					</div>
 			</div>
 			</div>

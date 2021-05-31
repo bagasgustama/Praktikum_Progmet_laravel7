@@ -79,7 +79,7 @@ class ProductsController extends Controller
 			try {
 				$image      = $req->file('foto');
                 $fileName   = time() . '.' . $image->getClientOriginalExtension(); //mengubah namafile
-                $path = Storage::putFileAs('public/images/produk', $req->file('foto'), $fileName); //upload file pada server
+                $path = Storage::putFileAs('/public/app/img/gambarproduk', $req->file('foto'), $fileName); //upload file pada server
                 //input user ke db
 			Product_image::create([
 				'product_id' => $req->idproduk,

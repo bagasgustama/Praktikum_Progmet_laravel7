@@ -49,7 +49,7 @@
                             @if ($count==1)
                                 <div style="height: 250px" >
                                   {{-- <img src="{{asset('images/11.jpg')}}" alt=" "  class="img-responsive center"></a> --}}
-                                  <img src="{{ $image->image }}" alt=" "  class="img-responsive center"></a>
+                                  <img src="{{ $image["image"] }}" alt=" "  class="img-responsive center"></a>
                                 </div>
 
                                 {{-- <div class="image" style="height: 450px">
@@ -67,7 +67,8 @@
                               {{-- <a href="/produk/{{ $produk["id"] }}/view">View</a> --}}
                           </div>
                       </div>
-                      <h4><a href="/produk/{{ $produk["id"] }}/view">{{ $produk["product_name"] }}</a></h4>
+
+                      <h4 style="margin-top: 50px"><a href="/produk/{{ $produk["id"] }}/view">{{ $produk["product_name"] }}</a></h4>
                       <p>{{ Str::limit($produk["description"], 30, $end='...') }}</p>
                       <div class="simpleCart_shelfItem products-right-grid1-add-cart">
 

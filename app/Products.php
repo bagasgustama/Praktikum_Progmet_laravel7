@@ -18,7 +18,7 @@ class Products extends Model
     }
 
     public function diskon(){
-        return $this->hasMany(Discounts::class, 'id_product','id')->orderBy('id','desc')->limit('1');
+        return $this->hasMany(Discounts::class, 'product_id','id')->orderBy('id','desc')->limit('1');
     }
 
     public function cart(){
@@ -30,7 +30,7 @@ class Products extends Model
         return $image;
     }
     public function getdiskon(){
-        $diskon = Discounts::where('id_product',$this->id)->where('start','<=',date('Y-m-d'))->where('end','>=',date('Y-m-d'))->first();
+        $diskon = Discounts::where('product_id',$this->id)->where('start','<=',date('Y-m-d'))->where('end','>=',date('Y-m-d'))->first();
         return $diskon;
     }
 

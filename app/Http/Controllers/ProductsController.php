@@ -24,14 +24,17 @@ class ProductsController extends Controller
 	}
 
 	function listdiskon(){
-		Product::findOrFail($_GET['id']);
+		// dd(Product::findOrFail($_GET['id'])->id);
+		// $data['id'] = Product::findOrFail($_GET['id']);
+		$data['id'] = Product::findOrFail($_GET['id'])->id;
 		$data['category'] = Product_categorie::all();
-		$data['diskon'] = Product::with('diskon')->get();
+    $data['diskon'] = Product::with('diskon')->get();
+    $data['listdis'] = Discount::all();
 		return view('admin.listdiskon', $data);
 	}
 
 	function listreview(){
-		Product::findOrFail($_GET['id']);
+		$data['id'] = Product::findOrFail($_GET['id'])->id;
 		$data['category'] = Product_categorie::all();
 		$data['review'] = Product::with('review')->get();
 		return view('admin.listreview', $data);
@@ -57,7 +60,7 @@ class ProductsController extends Controller
 
 		try {
 			Discount::create([
-				'id_product' => $req->idproduk,
+				'product_id' => $req->idproduk,
 				'percentage' => $req->persen,
 				'start' => $req->start,
 				'end' => $req->end

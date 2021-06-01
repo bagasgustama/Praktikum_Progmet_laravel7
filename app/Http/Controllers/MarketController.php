@@ -75,7 +75,7 @@ class MarketController extends Controller
     }
 
     public function tampiltransaksi(){
-        $data_transaksi = Transactions::where('user_id', Auth::user()->id)->get();
+        $data_transaksi = Transactions::where('user_id', Auth::user()->id)->orderBy('created_at','desc')->get();
 
         return view('user_layouts.user_transactionlist', compact('data_transaksi'));
     }

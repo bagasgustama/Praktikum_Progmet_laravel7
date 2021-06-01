@@ -21,13 +21,16 @@
     @if(Session::has('gagal'))
     <p class="alert alert-danger mt-3" style="text-align: center;">{{ Session::get('gagal') }}</p>
     @endif
+    @php
+        $id = $id -1;
+    @endphp
     <div class="section-body">
         <form class="row" action="{{ route('savediskon') }}" method="post">
             @csrf
             <div class="col-lg-12">
-                <h6>Nama Produk : {{$diskon[0]->product_name}}</h6>
+                <h6>Nama Produk : {{$diskon[$id]->product_name}}</h6>
             </div>
-            <input type="hidden" name="idproduk" value="{{$diskon[0]->id}}">
+            <input type="hidden" name="idproduk" value="{{$diskon[$id]->id}}">
             <div class="col-lg-4">
                 <div class="form-group">
                     <label>Persentase</label>
@@ -62,7 +65,7 @@
                         </thead>
                         <tbody style="text-align: center;">
                             <?php $bil=1; ?>
-                            @foreach($diskon[0]->diskon as $d)
+                            @foreach($diskon[$id]->diskon as $d)
                             <tr>
                                 <td>{{$bil++}}</td>
                                 <td>{{$d->percentage}} % </td>

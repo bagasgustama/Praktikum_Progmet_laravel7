@@ -155,6 +155,8 @@
                     
                         
                     </span>
+                  @else
+                  <span class="badge badge-danger badge-counter">0</span>
                 @endif
                 <p><a href="javascript:;" class="simpleCart_empty">Notif</a></p>
             </a>
@@ -170,16 +172,12 @@
                     $data = json_decode($item->data);
                 @endphp
                     
-                    <a class="dropdown-item d-flex align-items-center" onclick="" href="">
+                    <a class="dropdown-item d-flex align-items-center" onclick="" href="/transaksi">
                       <a class="dropdown-item d-flex align-items-center" >
 
-                    <div class="mr-3">
-                        <div class="icon-circle bg-primary">
-                            <i class="fas fa-file-alt text-white"></i>
-                        </div>
-                    </div>
+                   
                     <div style="margin-bottom: 10px">
-                        <div class="small text-gray-500">{{ $data->nama }} {{ $data->massage}}</div>
+                        <div class="small text-gray-500"><a href="/transaksi">{{ $data->nama }} {{ $data->massage}}</a></div>
                         <span class="font-weight-bold">{{ date("d F Y", strtotime($item->created_at)) }}</span>
                     </div>
                 </a>

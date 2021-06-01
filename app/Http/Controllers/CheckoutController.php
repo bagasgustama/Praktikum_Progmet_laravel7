@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Notifications\AdminResetPasswordNotification;
 use App\Admin;
 use App\AdminNotifications;
 use App\Carts;
@@ -171,6 +171,7 @@ class CheckoutController extends Controller
     public function uploadpayment($id, Request $request){
 
         $data_transaksi= Transactions::where('user_id', Auth::user()->id)->find($id);
+    
 
         foreach($request->file('foto_pembayaran') as $foto){
             $nama_image = md5(now().'_').$foto->getClientOriginalName();
@@ -179,7 +180,7 @@ class CheckoutController extends Controller
             $data_transaksi->proof_of_payment = $nama_image;
             $data_transaksi->save();
         }
-        
+        User::find(Auth::user()->id)->notify(new AdminResetPasswordNotification);
         return redirect('/sukses-bayar/'.$data_transaksi->id);
     }
     

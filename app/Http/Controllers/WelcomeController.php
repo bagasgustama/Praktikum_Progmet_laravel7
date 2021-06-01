@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Products;
 use Illuminate\Http\Request;
-use App\Notifications\AdminResetPasswordNotification;
 use App\Categories;
 use App\Discounts;
 use Illuminate\Support\Facades\DB;
@@ -46,8 +45,8 @@ class WelcomeController extends Controller
         $tanggal_hariini = Carbon::parse($hariini);
         // return view('user_layouts.user_product',['data_produk' => $data_produk, 'data_kategori' => $data_kategori, 'tanggal_hariini' => $tanggal_hariini]);
 
-        $user = User::find(1);
-        User::find(1)->notify(new AdminResetPasswordNotification);
+        // $user = User::find(1);
+        // User::find(1)->notify(new AdminResetPasswordNotification);
 
         return view('welcome',['data_produk' => $data_produk ,'filterkategori' => $filterkategori, 'data_kategori' => $data_kategori, 'tanggal_hariini' => $tanggal_hariini]);
     

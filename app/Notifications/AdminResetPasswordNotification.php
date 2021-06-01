@@ -18,9 +18,9 @@ class AdminResetPasswordNotification extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($token)
     {
-     //
+        $this->token = $token;
     }
 
     /**
@@ -31,7 +31,7 @@ class AdminResetPasswordNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail'];
     }
 
     /**
@@ -57,7 +57,7 @@ class AdminResetPasswordNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'data' => 'This is my first notification'
+            //
         ];
     }
 }

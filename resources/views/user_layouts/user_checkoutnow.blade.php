@@ -54,7 +54,7 @@
         <div class="mb-3 form-check">
           <label class="form-check-label" for="exampleCheck1" style="padding: 0px; margin-top :20px;">Layanan</label>
         </div>
-        <select class=" form-control" style="padding: 0px " name="shipping_cost" id="layanan" >
+        <select class=" form-control" style="padding: 0px " name="shipping_cost" id="layanan" required>
           <option value="" selected disabled>Pilih Layanan</option>
       </select>
         <button type="submit" class="btn btn-primary " style="margin-top :20px;">Submit</button>

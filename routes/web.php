@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourierController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\TransactionsController;
+use App\Http\Controllers\DetailTransactionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,7 +111,12 @@ Route::group(['middleware'=> ['auth:admin']],function () {
 	Route::post('/ubah/category', [CategoryController::class, 'ubahcategory'])->name('ubah.category');
 	Route::get('/hapus/category', [CategoryController::class, 'hapuscategory'])->name('hapus.category');
     Route::get('/admin/logout', [AuthController::class, 'logout'])->name('admin.logout');
-	Route::get('/list/transaction', [TransactionsController::class , 'index'])->name('list.transaction');
-	Route::post('/save/transaction', [TransactionsController::class, 'savetransaction'])->name('save.transaction');
+	// Route::get('/list/transaction', [TransactionsController::class , 'index'])->name('list.transaction');
+    // Route::post('/save/transaction', [TransactionsController::class, 'savetransaction'])->name('save.transaction');
+    
+    Route::get('/list/transaction', [TransactionsController::class , 'index'])->name('list.transaction');
+    Route::get('/list/detail_transaction', [DetailTransactionsController::class , 'index'])->name('list.detailtrx');
+    Route::post('/save/transaction', [TransactionsController::class, 'ubahstatus'])->name('save.transaction');
+    Route::get('/ubah/transaction/page', [TransactionsController::class, 'ubahtransactionpage'])->name('ubah.transaction.page');
     
 });

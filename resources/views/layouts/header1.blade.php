@@ -251,9 +251,7 @@
                           <label>Kategori</label>
                           <select class="form-control" name="kategori" required>
                               <option value="">--Select Here--</option>
-                              @foreach($category as $c)
-                              <option value="{{$c->id}}">{{$c->category_name}}</option>
-                              @endforeach
+                            
                           </select>
                       </div>
                       <div class="form-group">
@@ -288,7 +286,6 @@
           </div>
       </div>
   </div>
-  <!--End Modal Transaction -->
 
     <div id="app">
         <div class="main-wrapper">
@@ -316,10 +313,10 @@
         <div class="main-sidebar">
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand">
-                    <a href="index.html">PRAK SHOP</a>
+                    <a href="{{ route('admin.home') }}">PRAK SHOP</a>
                 </div>
                 <div class="sidebar-brand sidebar-brand-sm">
-                    <a href="index.html">BS</a>
+                    <a href="{{ route('admin.home') }}">BS</a>
                 </div>
                 <ul class="sidebar-menu">
                     <li class="menu-header">Dashboard</li>

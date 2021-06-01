@@ -8,6 +8,7 @@ use Illuminate\View\View as ViewView;
 use App\AdminNotifications;
 use App\UserNotifications;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Blade::directive('currency', function ($expression) {
+            return "Rp. <?php echo number_format($expression, 0, ',', '.'); ?>";
+        });
 
         view()->composer('layouts.header1', function (ViewView $view) {
             $notif = AdminNotifications::where('read_at', null)->orderBy('created_at','desc')->limit(5)->get();

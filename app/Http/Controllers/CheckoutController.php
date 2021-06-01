@@ -172,10 +172,16 @@ class CheckoutController extends Controller
 
         $data_transaksi= Transactions::where('user_id', Auth::user()->id)->find($id);
     
+        // if ($req->hasFile('foto')) {
+        //     try {
+        //         $image = $request->file('foto_pembayaran');
+        //         $nama_image = time() . '.' . $image->getClientOriginalExtension();
+        //     } catch (Exception $e) {
 
+        //     }
         foreach($request->file('foto_pembayaran') as $foto){
-            $nama_image = md5(now().'_').$foto->getClientOriginalName();
-            $foto->storeAs('img/buktipembayaran',$nama_image);
+            $nama_image = time().'_'.$foto->getClientOriginalName();
+            $foto->storeAs('/public/app/img/buktipembayaran',$nama_image);
             $data_transaksi = Transactions::find($id);
             $data_transaksi->proof_of_payment = $nama_image;
             $data_transaksi->save();

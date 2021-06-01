@@ -10,6 +10,7 @@ use App\Models\Product_category_detail;
 use App\Models\Product_image;
 use App\Models\Product_review;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -30,8 +31,16 @@ class AdminController extends Controller
      */
     public function index()
     {
+
+        $transaksi = DB::table('transactions')->count();
+        $transaksii = DB::table('transactions')->sum('total');
+        $barang = DB::table('products')->count();
+        $user = DB::table('users')->count();
         $data['category'] = Product_categorie::all();
-    	return view('admin.homepage', $data);
+        return view('admin.homepage',['transaksi'=>$transaksi, 'category'=>$data['category'], 'transaksii'=>$transaksii, 'barang'=>$barang, 'user'=>$user]);
+
+        // $data['category'] = Product_categorie::all();
+    	// return view('admin.homepage', $data);
         // return view('admin');
     }
 }

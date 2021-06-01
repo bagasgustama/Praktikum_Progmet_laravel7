@@ -20,6 +20,7 @@ use App\User;
 class CheckoutController extends Controller
 {
     public function checkoutproduk(){
+        // asda
         $price=0;
         $total=0;
         $berat_total=0;

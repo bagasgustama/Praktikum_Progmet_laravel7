@@ -23,6 +23,7 @@
     @endif
     @php
         $id = $id -1;
+        // fgdfg
     @endphp
     <div class="section-body">
         <div class="row">

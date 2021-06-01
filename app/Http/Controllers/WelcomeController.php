@@ -34,6 +34,7 @@ class WelcomeController extends Controller
      */
     public function index()
     {
+        // asda
         $data_kategori = Categories::all();
         $data_produk = Products::all();
         $value = 1;
